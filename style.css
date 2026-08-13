@@ -1,6 +1,7 @@
 /* ==============================
    GENERAL
 ================================= */
+
 * {
     box-sizing: border-box;
 }
@@ -16,11 +17,12 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    background-size: 55% auto;
+    background-size: 55% auto;  /* ✅ Buong makita, kasya sa screen — babaan sa 45% kung masyadong malaki */
     background-color: #f0f8f5;
     color: #333;
 }
 
+/* ✅ Patong na maputla — mas malinaw ang teksto, logo sa likod */
 body::before {
     content: "";
     position: fixed;
@@ -37,91 +39,11 @@ img {
     height: auto;
 }
 
-/* ==============================
-   PDF VIEWER — KASAMA NA DITO!
-================================= */
-.pdf-modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.pdf-modal-content {
-    background-color: white;
-    border-radius: 8px;
-    width: 95%;
-    height: 92%;
-    max-width: 950px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
-}
-.pdf-close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #666;
-    z-index: 10;
-    line-height: 1;
-}
-.pdf-close:hover {
-    color: #000;
-}
-#pdfFileName {
-    padding: 15px 20px 5px;
-    margin: 0;
-    font-size: 18px;
-    color: #333;
-    padding-right: 40px;
-}
-#pdfViewerFrame {
-    flex: 1;
-    width: 100%;
-    border: none;
-    border-radius: 0 0 8px 8px;
-}
-
-/* ==============================
-   PDF & EXCEL CARDS
-================================= */
-.pdf-container, .excel-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
-}
-.pdf-card, .excel-card {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-.view-btn, .download-btn {
-    padding: 8px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-.view-btn { background: #3498db; color: white; }
-.download-btn { background: #e74c3c; color: white; }
 
 /* ==============================
    HEADER
 ================================= */
+
 .header {
     background: white;
     display: flex;
@@ -133,26 +55,48 @@ img {
     position: relative;
     z-index: 1;
 }
-.hospital-logo { width: 150px; height: auto; }
-.header-text h1 { margin: 0; color: #742080; font-size: 32px; }
-.header-text p { margin: 8px 0; color: #742080; font-size: 18px; }
-.header-text em { color: #742080; font-size: 17px; }
+
+.hospital-logo {
+    width: 150px;
+    height: auto;
+}
+
+.header-text h1 {
+    margin: 0;
+    color: #742080;
+    font-size: 32px;
+}
+
+.header-text p {
+    margin: 8px 0;
+    color: #742080;
+    font-size: 18px;
+}
+
+.header-text em {
+    color: #742080;
+    font-size: 17px;
+}
+
 
 /* ==============================
    NAVIGATION
 ================================= */
+
 .navbar {
     background: #742080;
     width: 100%;
     position: relative;
     z-index: 1;
 }
+
 .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
+
 .nav-container a {
     color: white;
     text-decoration: none;
@@ -160,11 +104,16 @@ img {
     font-weight: bold;
     transition: 0.3s;
 }
-.nav-container a:hover { background: #5c1767; }
+
+.nav-container a:hover {
+    background: #5c1767;
+}
+
 
 /* ==============================
    HERO
 ================================= */
+
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -172,8 +121,18 @@ img {
     position: relative;
     z-index: 1;
 }
-.hero h2 { color: #742080; font-size: 32px; margin-bottom: 20px; }
-.hero p { font-size: 20px; margin-bottom: 30px; }
+
+.hero h2 {
+    color: #742080;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
 .hero button {
     background: #742080;
     color: white;
@@ -184,11 +143,16 @@ img {
     cursor: pointer;
     transition: 0.3s;
 }
-.hero button:hover { background: #5c1767; }
+
+.hero button:hover {
+    background: #5c1767;
+}
+
 
 /* ==============================
    SECTIONS
 ================================= */
+
 .section {
     max-width: 1100px;
     margin: auto;
@@ -197,17 +161,28 @@ img {
     position: relative;
     z-index: 1;
 }
-.section h2 { color: #742080; font-size: 30px; margin-bottom: 25px; }
-.section p { line-height: 1.7; }
+
+.section h2 {
+    color: #742080;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.section p {
+    line-height: 1.7;
+}
+
 
 /* ==============================
    SERVICES
 ================================= */
+
 .services-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
 .service-card {
     background: rgba(255, 255, 255, 0.92);
     padding: 30px 20px;
@@ -215,9 +190,319 @@ img {
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
-.service-card:hover { transform: translateY(-5px); }
-.service-card h3 { color: #742080; margin-bottom: 10px; }
-.service-button { cursor: pointer; }
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: #742080;
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+footer {
+    background: #742080;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ==============================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+    .header {
+        gap: 15px;
+    }
+
+    .hospital-logo {
+        width: 120px;
+    }
+
+    .header-text h1 {
+        font-size: 26px;
+    }
+
+    .header-text p {
+        font-size: 16px;
+    }
+
+    .header-text em {
+        font-size: 15px;
+    }
+
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==============================
+   MOBILE PHONE
+================================= */
+
+@media (max-width: 600px) {
+
+    /* Header */
+
+    .header {
+        flex-direction: column;
+        padding: 20px 10px;
+        gap: 8px;
+    }
+
+    .hospital-logo {
+        width: 110px;
+    }
+
+    .header-text h1 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .header-text p {
+        font-size: 14px;
+        margin: 6px 0;
+    }
+
+    .header-text em {
+        font-size: 13px;
+    }
+
+
+    /* Navigation */
+
+    .nav-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-container a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hero button {
+        width: 80%;
+        max-width: 250px;
+        padding: 13px;
+    }
+
+
+    /* Sections */
+
+    .section {
+        padding: 45px 15px;
+    }
+
+    .section h2 {
+        font-size: 26px;
+    }
+
+
+    /* Services */
+
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .service-card {
+        padding: 25px 15px;
+    }
+
+
+    /* Footer */
+
+    footer {
+        font-size: 14px;
+    }
+
+}
+/* ==============================
+   CLICKABLE SERVICE
+================================= */
+
+.service-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.service-link span {
+    display: inline-block;
+    margin-top: 15px;
+    color: #742080;
+    font-weight: bold;
+}
+
+.service-link:hover span {
+    text-decoration: underline;
+}
+
+
+/* ==============================
+   MEDICAL ART BUILDING
+================================= */
+
+.mab-section {
+    background: rgba(243, 232, 246, 0.85);
+}
+
+.mab-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.mab-card {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mab-card h3 {
+    color: #742080;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .mab-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==============================
+   MAB CLICKABLE CARD
+================================= */
+
+.mab-button {
+    cursor: pointer;
+}
+
+.mab-button span {
+    display: inline-block;
+    margin-top: 15px;
+    color: #742080;
+    font-weight: bold;
+}
+
+.mab-button:hover span {
+    text-decoration: underline;
+}
+
+
+/* ==============================
+   MAB DETAILS
+================================= */
+
+.mab-details {
+    display: none;
+    background: rgba(243, 232, 246, 0.85);
+    animation: fadeIn 0.4s ease;
+}
+
+.mab-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.mab-card {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mab-card h3 {
+    color: #742080;
+}
+
+.close-mab {
+    margin-top: 30px;
+    background: #742080;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.close-mab:hover {
+    background: #5c1767;
+}
+
+
+/* Animation */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .mab-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==============================
+   CLICKABLE SERVICES
+================================= */
+
+.service-button {
+    cursor: pointer;
+}
+
 .service-button span {
     display: inline-block;
     margin-top: 15px;
@@ -225,45 +510,319 @@ img {
     font-weight: bold;
 }
 
+.service-button:hover span {
+    text-decoration: underline;
+}
+
+
 /* ==============================
    SERVICE DETAILS
 ================================= */
+
 .service-details {
     display: none;
     background: rgba(243, 232, 246, 0.85);
     animation: fadeIn 0.4s ease;
 }
+
 .details-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 30px;
 }
+
 .details-card {
     background: rgba(255, 255, 255, 0.92);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
 }
-.details-card h3 { color: #742080; }
-.price-list-button, .close-service {
-    padding: 10px 20px;
-    margin: 10px 10px 10px 0;
+
+.details-card h3 {
+    color: #742080;
+}
+
+.close-service {
+    margin-top: 30px;
+    background: #742080;
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 12px 25px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 15px;
 }
-.price-list-button { background: #742080; color: white; }
-.close-service { background: #ccc; color: #333; }
+
+.close-service:hover {
+    background: #5c1767;
+}
+
+
+/* ==============================
+   ANIMATION
+================================= */
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==============================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+
+    .details-container {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 /* ==============================
-   PRICE LIST MODAL
+   HOME GALLERY
 ================================= */
+
+.home-gallery {
+    background: rgba(248, 248, 248, 0.85);
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ==============================
+   HOSPITAL VIDEOS
+================================= */
+
+.hospital-video {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.videos-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.video-container {
+    width: 100%;
+}
+
+.video-container video {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background: black;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==============================
+   MOBILE PHONE
+================================= */
+
+@media (max-width: 768px) {
+
+    .videos-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin: 20px 0;
+    }
+
+    .video-container video {
+        height: 130px;
+        border-radius: 8px;
+    }
+
+}
+
+/* ==============================
+   PDF DOCUMENTS
+================================= */
+
+.pdf-section {
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.pdf-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.pdf-card {
+    display: block;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+    transition: transform 0.2s ease;
+}
+
+.pdf-card:hover {
+    transform: translateY(-5px);
+}
+
+.pdf-card h3 {
+    color: #742080;
+}
+
+.pdf-card span {
+    display: inline-block;
+    margin-top: 15px;
+    color: #742080;
+    font-weight: bold;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .pdf-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .pdf-card {
+        padding: 15px;
+    }
+
+    .pdf-card h3 {
+        font-size: 16px;
+    }
+
+}
+
+/* ==============================
+   EXCEL FILES
+================================= */
+
+.excel-section {
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.excel-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.excel-card {
+    display: block;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+    transition: transform 0.2s ease;
+}
+
+.excel-card:hover {
+    transform: translateY(-5px);
+}
+
+.excel-card h3 {
+    color: #742080;
+}
+
+.excel-card span {
+    display: inline-block;
+    margin-top: 15px;
+    color: #742080;
+    font-weight: bold;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .excel-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .excel-card {
+        padding: 15px;
+    }
+
+    .excel-card h3 {
+        font-size: 16px;
+    }
+
+}
+
+/* ==============================
+   CLICKABLE PRICE LIST
+================================= */
+
+.price-list-button {
+    margin-top: 20px;
+    margin-right: 8px;
+    background: #742080;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.price-list-button:hover {
+    background: #5c1767;
+    transform: translateY(-2px);
+}
+
+/* Price List Modal */
 .price-modal {
     display: none;
     position: fixed;
@@ -273,11 +832,13 @@ img {
     padding: 20px;
     overflow-y: auto;
 }
+
 .price-modal.active {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .price-modal-content {
     position: relative;
     width: 100%;
@@ -289,7 +850,12 @@ img {
     padding: 30px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
-.price-modal-content h2 { color: #742080; margin: 0 45px 10px 0; }
+
+.price-modal-content h2 {
+    color: #742080;
+    margin: 0 45px 10px 0;
+}
+
 .price-modal-close {
     position: absolute;
     top: 12px;
@@ -301,116 +867,157 @@ img {
     background: #f0e6f3;
     color: #742080;
     font-size: 28px;
+    line-height: 1;
     cursor: pointer;
 }
-.price-modal-close:hover { background: #742080; color: white; }
-.price-search-wrap { margin: 20px 0; }
+
+.price-modal-close:hover {
+    background: #742080;
+    color: white;
+}
+
+.price-search-wrap {
+    margin: 20px 0;
+}
+
 .price-search-wrap input {
     width: 100%;
     padding: 13px 15px;
     border: 1px solid #d8c3df;
     border-radius: 6px;
     font-size: 16px;
+    outline: none;
 }
-.price-table-wrapper { width: 100%; overflow-x: auto; border: 1px solid #eee; border-radius: 8px; }
-.price-table { width: 100%; min-width: 650px; border-collapse: collapse; }
-.price-table th, .price-table td { padding: 13px 15px; border-bottom: 1px solid #eee; text-align: left; }
-.price-table th { background: #eee0f2; color: #742080; }
-.price-table td:nth-child(3) { text-align: right; font-weight: bold; white-space: nowrap; }
-.price-table td small { opacity: 0.7; }
-.price-table tbody tr:hover { background: #faf7fb; }
 
-/* ==============================
-   LIGHTBOX / IMAGE VIEWER
-================================= */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
+.price-search-wrap input:focus {
+    border-color: #742080;
+}
+
+.price-table-wrapper {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    text-align: center;
-    padding-top: 30px;
+    overflow-x: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
 }
-.lightbox img { max-width: 90%; max-height: 85vh; margin: auto; display: block; }
-.lightbox-close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    color: #f1f1f1;
-    font-size: 40px;
+
+.price-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.price-table th,
+.price-table td {
+    padding: 13px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.price-table th {
+    background: #eee0f2;
+    color: #742080;
+}
+
+.price-table td:nth-child(3) {
+    text-align: right;
     font-weight: bold;
-    cursor: pointer;
+    white-space: nowrap;
 }
-.home-gallery { background: rgba(248, 248, 248, 0.85); }
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 30px;
-}
-.gallery-item { overflow: hidden; border-radius: 12px; background: white; box-shadow: 0 3px 12px rgba(0,0,0,0.10); }
-.gallery-img { width: 100%; height: 220px; object-fit: cover; cursor: zoom-in; transition: transform 0.2s; }
-.gallery-img:hover { transform: scale(1.05); }
 
-/* ==============================
-   VIDEOS
-================================= */
-.hospital-video { background: rgba(255, 255, 255, 0.85); }
-.videos-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 30px auto;
+.price-table td:nth-child(4) {
+    white-space: nowrap;
+    font-weight: bold;
 }
-.video-container video { width: 100%; height: 250px; object-fit: contain; background: black; border-radius: 12px; }
 
-/* ==============================
-   FOOTER & SCROLL BUTTON
-================================= */
-footer {
-    background: #742080;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    position: relative;
-    z-index: 1;
+.price-table td small {
+    opacity: 0.7;
 }
+
+.price-table tbody tr:hover {
+    background: #faf7fb;
+}
+
+@media (max-width: 768px) {
+    .price-modal {
+        padding: 10px;
+    }
+
+    .price-modal-content {
+        max-height: 94vh;
+        padding: 22px 15px;
+    }
+
+    .price-list-button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .price-table {
+        min-width: 620px;
+    }
+}
+
+/* ===== LIGHTBOX / IMAGE VIEWER ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  margin: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gallery-img {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+.gallery-img:hover {
+  transform: scale(1.02);
+}
+
+/* ===== SCROLL TO TOP BUTTON ===== */
 #scrollTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 9999;
-    font-size: 22px;
-    width: 50px;
-    height: 50px;
-    background: #742080;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  background-color: #742080;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
 }
-#scrollTopBtn:hover { background: #5c1767; transform: translateY(-3px); }
 
-/* ==============================
-   RESPONSIVE — TABLET & MOBILE
-================================= */
-@media (max-width: 900px) {
-    .services-container { grid-template-columns: repeat(2, 1fr); }
-    .details-container, .videos-container, .gallery-container, .pdf-container, .excel-container { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-    .header { flex-direction: column; padding: 20px 10px; }
-    .nav-container { flex-direction: column; width: 100%; }
-    .nav-container a { width: 100%; text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); }
-    .services-container, .details-container, .videos-container, .gallery-container, .pdf-container, .excel-container { grid-template-columns: 1fr; }
-    .hero h2 { font-size: 25px; }
-    .section h2 { font-size: 26px; }
-    .price-modal-content { padding: 22px 15px; }
+#scrollTopBtn:hover {
+  background-color: #5c1767;
+  transform: translateY(-3px);
 }
