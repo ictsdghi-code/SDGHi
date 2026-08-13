@@ -28,7 +28,7 @@ const localPriceData = [
 	// ✅ MAB SERVICES
     {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"},
     // ✅ PHARMACY SERVICES
-    {category:"Pharmacy Services",code:"PHARM-001",service:"Prescription Medicine",description:"Dispensing of prescribed medicines",price:0,status:"Active"},
+    {category:"Pharmacy Services",code:"PHARM-001",service:"Prescription Medicine",description:"Dispensing of prescribed medicines",price:100,status:"Active"},
     {category:"Pharmacy Services",code:"PHARM-002",service:"Over-the-Counter Medicines",description:"Available non-prescription medicines",price:0,status:"Active"},
     {category:"Pharmacy Services",code:"PHARM-003",service:"Pharmacy Consultation",description:"Medication counseling and advice",price:150,status:"Active"}
 ];
