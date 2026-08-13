@@ -34,13 +34,15 @@ function requestPassword(button) {
     document.getElementById("fileToDownloadName").textContent = "File: " + fileName;
     document.getElementById("downloadPassword").value = "";
     document.getElementById("passwordError").style.display = "none";
-    document.getElementById("passwordModal").style.display = "flex";
+    // ✅ GINAGAMIT NA ANG CLASS .active KAHIT SA PASSWORD MODAL
+    document.getElementById("passwordModal").style.display = "";
+    document.getElementById("passwordModal").classList.add("active");
     document.getElementById("passwordModal").setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 }
 
 function closePasswordModal() {
-    document.getElementById("passwordModal").style.display = "none";
+    document.getElementById("passwordModal").classList.remove("active");
     document.getElementById("passwordModal").setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     selectedFileUrl = "";
