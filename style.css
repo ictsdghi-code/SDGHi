@@ -85,20 +85,21 @@ img {
 }
 
 .nav-container {
-    display: flex;
-    justify-content: space-between; /* ← Pantay mula gilid hanggang gilid */
-    align-items: center;
-    flex-wrap: wrap;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
 }
 
 .nav-container a {
     color: white;
     text-decoration: none;
-    padding: 15px 0; /* ← Tinanggal ang kaliwa-kanang padding */
+    padding: 15px 0 !important;
     font-weight: bold;
     transition: 0.3s;
-    flex: 1; /* ← Pantay na lapad para sa lahat */
-    text-align: center; /* ← Nakagitna ang teksto */
+    flex: 1 1 0 !important;
+    text-align: center !important;
 }
 
 .nav-container a:hover {
