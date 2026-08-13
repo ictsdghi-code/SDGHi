@@ -67,7 +67,10 @@
         <div class="pdf-modal-content">
             <span class="pdf-close" onclick="closePdfViewer()">&times;</span>
             <h3 id="pdfFileName">Document</h3>
-            <iframe id="pdfViewerFrame" src="" frameborder="0"></iframe>
+            <iframe id="pdfViewerFrame" src="" frameborder="0" 
+            oncontextmenu="return false;" 
+            allowfullscreen
+            loading="eager"></iframe>
         </div>
     </div>
 
