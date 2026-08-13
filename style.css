@@ -558,23 +558,31 @@ img {
     justify-content: center;
 }
 
+/* PASSWORD MODAL — NAKAGITNA AT MAS MALIIT */
 .price-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 950px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 420px; /* ← LILIITAN natin mula sa dati */
     max-height: 90vh;
     overflow-y: auto;
-    background: white;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    position: relative;
+    
+    /* ✅ PARA SIGURADONG NAKAGITNA */
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.price-modal-content h2 {
-    color: #742080;
-    margin: 0 45px 10px 0;
+/* PARA SIGURADONG NAKAGITNA ANG BUONG MODAL */
+.price-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
 .price-modal-close {
     position: absolute;
     top: 12px;
