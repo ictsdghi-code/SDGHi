@@ -1,6 +1,5 @@
 // ==========================================
-// ✅ INAYAWAN NA — TUMUTUGMA SA CSV MO!
-// CSV columns: Category,Service Code,Service Name,Description,Price,Status
+// ✅ ITINAGO NA ANG MGA INACTIVE!
 // ==========================================
 let priceData = [];
 let activePriceCategory = "";
@@ -41,11 +40,10 @@ const priceCategoryMap = {
 };
 
 // ==========================================
-// ✅ BINABASA NA ANG TAMA NG AYOS NG CSV MO!
+// ✅ BINABASA ANG CSV + ITINAGO ANG INACTIVE!
 // ==========================================
 async function loadPriceListFromCSV() {
     try {
-      // ✅ Direktang kukuha sa tamang URL
       const res = await fetch(`https://raw.githubusercontent.com/ictsdghi-code/SDGHi/main/data/price-list.csv?v=${Date.now()}`);
       if (!res.ok) throw Error("Hindi makuha ang CSV");
       
@@ -53,28 +51,35 @@ async function loadPriceListFromCSV() {
       const lines = text.trim().split("\n").filter(line => line.trim() !== "");
       
       priceData = [];
-      // ✅ Laktawan ang unang linya (pamagat) → simula sa pangalawang linya
       for (let i = 1; i < lines.length; i++) {
         const row = parseCSVLine(lines[i]);
-        // ✅ TAMA NA ANG AYOS: Category,Service Code,Service Name,Description,Price,Status
+        const status = (row[5] || "").trim();
+        
+        // ✅ LALABAS LANG KUNG "Active" — HINDI NA LALABAS KUNG Inactive!
+        if (status.toLowerCase() !== "active") {
+          continue; // ← LALAKTAN AGAD! HINDI IPAPAKITA SA WEBSITE!
+        }
+
         priceData.push({
           category: row[0]?.trim() || "",
           code: row[1]?.trim() || "",
           service: row[2]?.trim() || "",
           description: row[3]?.trim() || "",
           price: row[4]?.trim() || "0",
-          status: row[5]?.trim() || "Active"
+          status: status
         });
       }
       
-      console.log("✅ Presyo na-load mula sa CSV!", priceData);
+      console.log("✅ Presyo na-load! Inactive items hidden.", priceData);
     } catch (err) {
       console.warn("⚠️ Gamit ang nakalagay na presyo:", err.message);
-      priceData = localPriceData;
+      priceData = localPriceData.filter(item => 
+        (item.status || "").toLowerCase() === "active"
+      );
     }
 }
 
-// ✅ Tamang paghiwalay ng CSV (hindi magkakamali sa kuwit)
+// ✅ Tamang paghiwalay ng CSV
 function parseCSVLine(line) {
   const result = [];
   let current = "";
