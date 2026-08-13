@@ -11,3 +11,5 @@ Emergency Services,ER-001,Emergency Consultation,Emergency medical consultation,
 Outpatient Services,OPD-001,Medical Consultation,Outpatient consultation,500,Active
 Inpatient Services,IP-001,Private Room Rate,Private room rate per day,3500,Active
 Medical Art Building (MAB),MAB-001,Specialist Consultation,Medical specialist consultation,800,Active
+Pharmacy Services,PHARM-004,Paracetamol 500mg,Tablet per piece,12.50,Active
+Pharmacy Services,PHARM-005,Amoxicillin Capsule 500mg,Antibiotic per capsule,18.00,Active
