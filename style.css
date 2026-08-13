@@ -86,22 +86,21 @@ img {
 
 .nav-container {
     display: flex !important;
-    justify-content:  !important; /* ← Hindi na sa gilid, nasa gitna na lahat */
-    align-items:  !important;
+    justify-content: center !important; /* ← Hindi na sa gilid, nasa gitna na lahat */
+    align-items: center !important;
     flex-wrap: wrap;
-    gap: 5px !important; /* ← Ito ang layo ng bawat button — pwede mong baguhin: 30, 40, 50 */
+    gap: 40px !important; /* ← Ito ang layo ng bawat button — pwede mong baguhin: 30, 40, 50 */
 }
 
 .nav-container a {
     color: white;
     text-decoration: none;
-    padding: 15px 20px !important; /* ← May sariling lapad ang bawat button */
+    padding: 5px 5px !important; /* ← May sariling lapad ang bawat button */
     font-weight: bold;
     transition: 0.3s;
     text-align: center !important;
     flex: none !important; /* ← Hindi na mag-aagawan ng lapad */
 }
-
 .nav-container a:hover {
     background: #5c1767;
 }
