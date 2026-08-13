@@ -1,11 +1,33 @@
 // ==========================================
-// 🔐 PASSWORD SETTINGS — PALITAN DITO KUNG GUSTO MO!
+// ✅ ITINAGO NA ANG MGA INACTIVE!
 // ==========================================
-const CORRECT_PASSWORD = "Stdgh@2024!";
-
-let selectedFileUrl = "";
 let priceData = [];
 let activePriceCategory = "";
+
+// ==========================================
+// 👇 KUNG HINDI MAKUHA ANG CSV, ITO ANG GAGAMITIN
+// ==========================================
+const localPriceData = [
+	// ✅ LABORATORY SERVICES
+    {category:"Laboratory Services",code:"LAB-001",service:"Complete Blood Count",description:"Hematology test",price:350,status:"Active"},
+    {category:"Laboratory Services",code:"LAB-002",service:"Urinalysis",description:"Routine urine examination",price:150,status:"Active"},
+    {category:"Laboratory Services",code:"LAB-003",service:"Fecalysis",description:"Stool examination",price:150,status:"Active"},
+    {category:"Laboratory Services",code:"LAB-004",service:"Blood Typing",description:"ABO and Rh typing",price:200,status:"Active"},
+	// ✅ X-RAY SERVICES
+    {category:"Radiology Services",code:"RAD-001",service:"Chest X-Ray",description:"Chest radiographic examination",price:500,status:"Active"},
+    {category:"Radiology Services",code:"RAD-002",service:"Abdominal X-Ray",description:"Abdominal radiographic examination",price:600,status:"Active"},
+	// ✅ ULTRASOUND SERVICES
+    {category:"Ultrasound Services",code:"US-001",service:"Whole Abdominal Ultrasound",description:"Diagnostic ultrasound",price:1200,status:"Active"},
+    {category:"Ultrasound Services",code:"US-002",service:"Pelvic Ultrasound",description:"Pelvic diagnostic ultrasound",price:1000,status:"Active"},
+	// ✅ ER SERVICES
+    {category:"Emergency Services",code:"ER-001",service:"Emergency Consultation",description:"Emergency medical consultation",price:500,status:"Active"},
+	// ✅ OPD SERVICES
+    {category:"Outpatient Services",code:"OPD-001",service:"Medical Consultation",description:"Outpatient consultation",price:500,status:"Active"},
+	// ✅ IPD SERVICES
+    {category:"Inpatient Services",code:"IP-001",service:"Private Room Rate",description:"Private room rate per day",price:3500,status:"Active"},
+	// ✅ MAB SERVICES
+    {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"}
+];
 
 const priceCategoryMap = {
     emergency: "Emergency Services",
@@ -18,61 +40,10 @@ const priceCategoryMap = {
 };
 
 // ==========================================
-// 📄 PDF VIEWER FUNCTIONS
-// ==========================================
-function openPdfViewer(pdfUrl, fileName) {
-    const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
-    document.getElementById('pdfViewerFrame').src = cleanUrl;
-    document.getElementById('pdfFileName').textContent = fileName;
-    document.getElementById('pdfViewerModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closePdfViewer(event) {
-    if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
-        document.getElementById('pdfViewerModal').style.display = 'none';
-        document.getElementById('pdfViewerFrame').src = '';
-        document.body.style.overflow = '';
-    }
-}
-
-// ==========================================
-// 🔒 PASSWORD PROTECTION FUNCTIONS
-// ==========================================
-function requestPassword(button) {
-    selectedFileUrl = button.getAttribute("data-file");
-    const fileName = button.getAttribute("data-name");
-    document.getElementById("fileToDownloadName").textContent = "File: " + fileName;
-    document.getElementById("downloadPassword").value = "";
-    document.getElementById("passwordError").style.display = "none";
-    document.getElementById("passwordModal").style.display = "flex";
-    document.getElementById("passwordModal").setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-}
-
-function closePasswordModal() {
-    document.getElementById("passwordModal").style.display = "none";
-    document.getElementById("passwordModal").setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    selectedFileUrl = "";
-}
-
-function checkPassword() {
-    const input = document.getElementById("downloadPassword").value;
-    if (input === CORRECT_PASSWORD) {
-        window.location.href = selectedFileUrl;
-        closePasswordModal();
-    } else {
-        document.getElementById("passwordError").style.display = "block";
-    }
-}
-
-// ==========================================
-// 💰 KUKUNIN NA LANG MULA SA CSV — WALANG PRESYO DITO!
+// ✅ BINABASA ANG CSV + ITINAGO ANG INACTIVE!
 // ==========================================
 async function loadPriceListFromCSV() {
     try {
-      // ✅ Kukunin ang presyo mula sa UPLOADED mong CSV sa GitHub
       const res = await fetch(`https://raw.githubusercontent.com/ictsdghi-code/SDGHi/main/data/price-list.csv?v=${Date.now()}`);
       if (!res.ok) throw Error("Hindi makuha ang CSV");
       
@@ -82,10 +53,12 @@ async function loadPriceListFromCSV() {
       priceData = [];
       for (let i = 1; i < lines.length; i++) {
         const row = parseCSVLine(lines[i]);
-        const status = (row[5] || "").trim().toLowerCase();
+        const status = (row[5] || "").trim();
         
-        // ✅ IPAPAKITA LANG KUNG "Active" — itatago ang Inactive
-        if (status !== "active") continue;
+        // ✅ LALABAS LANG KUNG "Active" — HINDI NA LALABAS KUNG Inactive!
+        if (status.toLowerCase() !== "active") {
+          continue; // ← LALAKTAN AGAD! HINDI IPAPAKITA SA WEBSITE!
+        }
 
         priceData.push({
           category: row[0]?.trim() || "",
@@ -97,11 +70,12 @@ async function loadPriceListFromCSV() {
         });
       }
       
-      console.log("✅ Presyo na-load mula sa CSV!", priceData);
+      console.log("✅ Presyo na-load! Inactive items hidden.", priceData);
     } catch (err) {
-      alert("⚠️ Hindi mabasa ang price list. Siguraduhing na-upload ang CSV!");
-      console.error("Error:", err.message);
-      priceData = []; // ❌ Wala nang nakalagay na presyo dito
+      console.warn("⚠️ Gamit ang nakalagay na presyo:", err.message);
+      priceData = localPriceData.filter(item => 
+        (item.status || "").toLowerCase() === "active"
+      );
     }
 }
 
@@ -136,8 +110,9 @@ function showPriceList(categoryKey) {
     document.getElementById("priceModalDescription").textContent = "Current rates from the hospital price list.";
     document.getElementById("modalPriceSearch").value = "";
     renderModalPrices();
-    document.getElementById("priceListModal").classList.add("active");
-    document.getElementById("priceListModal").setAttribute("aria-hidden", "false");
+    const modal = document.getElementById("priceListModal");
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 }
 
@@ -157,14 +132,43 @@ function renderModalPrices() {
 }
 
 function closePriceList() {
-    document.getElementById("priceListModal").classList.remove("active");
-    document.getElementById("priceListModal").setAttribute("aria-hidden", "true");
+    const modal = document.getElementById("priceListModal");
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
 }
 
-// ==========================================
-// 📄 LIGHTBOX & OTHER FUNCTIONS
-// ==========================================
+function showMessage() {
+    alert("Welcome to Saint Dominic General Hospital, Inc.!");
+}
+
+function toggleService(serviceId) {
+    console.log("Binuksan:", serviceId);
+    const serviceSection = document.getElementById(serviceId);
+    if (!serviceSection) {
+        console.error("Hindi mahanap:", serviceId);
+        return;
+    }
+    if (serviceSection.style.display === "block") {
+        serviceSection.style.display = "none";
+    } else {
+        serviceSection.style.display = "block";
+        serviceSection.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadPriceListFromCSV();
+    document.getElementById("modalPriceSearch").addEventListener("input", renderModalPrices);
+    document.getElementById("priceListModal").addEventListener("click", e => {
+        if (e.target.id === "priceListModal") closePriceList();
+    });
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closePriceList();
+    });
+});
+
+// ===== LIGHTBOX FUNCTIONS =====
 function openLightbox(imgSrc) {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -174,40 +178,24 @@ function openLightbox(imgSrc) {
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'none';
   document.body.style.overflow = 'auto';
 }
 
-function showMessage() {
-    alert("Welcome to Saint Dominic General Hospital, Inc.!");
-}
-
-function toggleService(serviceId) {
-    const section = document.getElementById(serviceId);
-    if (!section) return;
-    section.style.display = section.style.display === "block" ? "none" : "block";
-    if (section.style.display === "block") section.scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
+// ===== SCROLL TO TOP FUNCTION =====
 window.onscroll = function() {
-    document.getElementById('scrollTopBtn').style.display = 
-        (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+  const btn = document.getElementById('scrollTopBtn');
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    btn.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+  }
 };
 
-// ==========================================
-// 🚀 SIMULAN — MAGBASA NG CSV
-// ==========================================
-document.addEventListener("DOMContentLoaded", async () => {
-    await loadPriceListFromCSV(); // ✅ Mula sa CSV na lahat!
-    document.getElementById("modalPriceSearch").addEventListener("input", renderModalPrices);
-    document.getElementById("priceListModal").addEventListener("click", e => {
-        if (e.target.id === "priceListModal") closePriceList();
-    });
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") { closePriceList(); closePasswordModal(); closePdfViewer(); }
-    });
-});
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
