@@ -9,7 +9,6 @@ let selectedFileUrl = "";
 // ==========================================
 function openPdfViewer(pdfUrl, fileName) {
     console.log("Opening PDF:", pdfUrl, fileName);
-    // Magdagdag ng #toolbar=0 para itago ang mga buttons ng PDF
     const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
     document.getElementById('pdfViewerFrame').src = cleanUrl;
     document.getElementById('pdfFileName').textContent = fileName;
@@ -19,8 +18,8 @@ function openPdfViewer(pdfUrl, fileName) {
 
 function closePdfViewer(event) {
     if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
-        document.getElementById('pdfViewerModal').style.display = 'none';
-        document.getElementById('pdfViewerFrame').src = '';
+        document.getElementById("pdfViewerModal").style.display = 'none';
+        document.getElementById("pdfViewerFrame").src = '';
         document.body.style.overflow = '';
     }
 }
@@ -85,23 +84,6 @@ function toggleService(serviceId) {
 let priceData = [];
 let activePriceCategory = "";
 
-const localPriceData = [
-    {category:"Laboratory Services",code:"LAB-001",service:"Complete Blood Count",description:"Hematology test",price:850,status:"Active"},
-    {category:"Laboratory Services",code:"LAB-002",service:"Urinalysis",description:"Routine urine examination",price:150,status:"Active"},
-    {category:"Laboratory Services",code:"LAB-003",service:"Fecalysis",description:"Stool examination",price:150,status:"Active"},
-    {category:"Laboratory Services",code:"LAB-004",service:"Blood Typing",description:"ABO and Rh typing",price:200,status:"Active"},
-    {category:"Radiology Services",code:"RAD-001",service:"Chest X-Ray",description:"Chest radiographic examination",price:500,status:"Active"},
-    {category:"Radiology Services",code:"RAD-002",service:"Abdominal X-Ray",description:"Abdominal radiographic examination",price:600,status:"Active"},
-    {category:"Ultrasound Services",code:"US-001",service:"Whole Abdominal Ultrasound",description:"Diagnostic ultrasound",price:1200,status:"Active"},
-    {category:"Ultrasound Services",code:"US-002",service:"Pelvic Ultrasound",description:"Pelvic diagnostic ultrasound",price:1000,status:"Active"},
-    {category:"Emergency Services",code:"ER-001",service:"Emergency Consultation",description:"Emergency medical consultation",price:500,status:"Active"},
-    {category:"Outpatient Services",code:"OPD-001",service:"Medical Consultation",description:"Outpatient consultation",price:500,status:"Active"},
-    {category:"Inpatient Services",code:"IP-001",service:"Private Room Rate",description:"Private room rate per day",price:3500,status:"Active"},
-    {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"},
-    {category:"Pharmacy Services",code:"PHARM-004",service:"Paracetamol 500mg",description:"Tablet per piece",price:12.50,status:"Active"},
-    {category:"Pharmacy Services",code:"PHARM-005",service:"Amoxicillin Capsule 500mg",description:"Antibiotic per capsule",price:18.00,status:"Active"}
-];
-
 const priceCategoryMap = {
     emergency: "Emergency Services",
     inpatient: "Inpatient Services",
@@ -133,7 +115,8 @@ async function loadPriceListFromCSV() {
             });
         }
     } catch {
-        priceData = localPriceData.filter(i => i.status.toLowerCase() === "active");
+        // Kung hindi makuha ang CSV, walang ipapakita
+        priceData = [];
     }
 }
 
@@ -151,7 +134,7 @@ function parseCSVLine(line) {
 
 function formatPrice(val) {
     const n = Number(String(val).replace(/[^0-9.-]/g, ""));
-    return isNaN(n) ? val : "₱" + n.toLocaleString("en-PH", {minimumFractionDigits:2,maximumFractionDigits:2});
+    return isNaN(n) ? val : "₱" + n.toLocaleString("en-PH", {minimumFractionDigits:2, maximumFractionDigits:2});
 }
 
 function showPriceList(key) {
