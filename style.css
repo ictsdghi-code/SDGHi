@@ -607,14 +607,19 @@ img {
 ================================= */
 #passwordModal.price-modal.active {
     align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
 }
 
 #passwordModal .price-modal-content {
     max-width: 420px !important;
     width: 90% !important;
-    margin: 0 auto !important;
-    transform: none !important;
-    top: 0 !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
 }
 
 /* Common close button */
