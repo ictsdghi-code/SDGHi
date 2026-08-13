@@ -95,7 +95,7 @@ img {
 .nav-container a {
     color: white;
     text-decoration: none;
-    padding: 5px 5px !important; /* ← May sariling lapad ang bawat button */
+    padding: 5px 20px !important; /* ← May sariling lapad ang bawat button */
     font-weight: bold;
     transition: 0.3s;
     text-align: center !important;
