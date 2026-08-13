@@ -9,7 +9,7 @@ let activePriceCategory = "";
 // ==========================================
 const localPriceData = [
 	// ✅ LABORATORY SERVICES
-    {category:"Laboratory Services",code:"LAB-001",service:"Complete Blood Count",description:"Hematology test",price:500,status:"Active"},
+    {category:"Laboratory Services",code:"LAB-001",service:"Complete Blood Count",description:"Hematology test",price:350,status:"Active"},
     {category:"Laboratory Services",code:"LAB-002",service:"Urinalysis",description:"Routine urine examination",price:150,status:"Active"},
     {category:"Laboratory Services",code:"LAB-003",service:"Fecalysis",description:"Stool examination",price:150,status:"Active"},
     {category:"Laboratory Services",code:"LAB-004",service:"Blood Typing",description:"ABO and Rh typing",price:200,status:"Active"},
@@ -28,7 +28,7 @@ const localPriceData = [
 	// ✅ MAB SERVICES
     {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"},
     // ✅ PHARMACY SERVICES
-    {category:"Pharmacy Services",code:"PHARM-001",service:"Prescription Medicine",description:"Dispensing of prescribed medicines",price:100,status:"Active"},
+    {category:"Pharmacy Services",code:"PHARM-001",service:"Prescription Medicine",description:"Dispensing of prescribed medicines",price:0,status:"Active"},
     {category:"Pharmacy Services",code:"PHARM-002",service:"Over-the-Counter Medicines",description:"Available non-prescription medicines",price:0,status:"Active"},
     {category:"Pharmacy Services",code:"PHARM-003",service:"Pharmacy Consultation",description:"Medication counseling and advice",price:150,status:"Active"}
 ];
