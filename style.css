@@ -603,22 +603,19 @@ img {
 }
 
 /* ==============================
-   🔑 PASSWORD MODAL — GITNA NG SCREEN
+   🔑 PASSWORD MODAL — SIGURADONG NASA GITNA
 ================================= */
 #passwordModal.price-modal.active {
     align-items: center !important;
     justify-content: center !important;
-    display: flex !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 #passwordModal .price-modal-content {
-    max-width: 420px;
-    width: 90%;
-    margin: 0;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    max-width: 420px !important;
+    width: 90% !important;
+    margin: 0 !important;
 }
 
 /* Common close button */
@@ -881,27 +878,4 @@ footer {
     .gallery-container {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-/* ===== PASSWORD MODAL — SIGURADONG NASA GITNA (PINAKAMATIBAY) ===== */
-#passwordModal.price-modal {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    display: none;
-    background: rgba(0,0,0,0.65);
-}
-
-#passwordModal.price-modal.active {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-#passwordModal .price-modal-content {
-    margin: 0 !important;
-    position: relative !important;
-    top: auto !important;
-    transform: none !important;
 }
