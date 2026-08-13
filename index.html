@@ -26,6 +26,7 @@
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
+            <a href="#documents">Documents</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -85,45 +86,45 @@
         </div>
     </section>
 
-    <!-- PDF DOCUMENTS -->
-    <section class="section pdf-section">
-        <h2>Hospital Documents</h2>
+    <!-- ✅ PDF DOCUMENTS — MAY PASSWORD PROTECTION! -->
+    <section id="documents" class="section">
+        <h2>Hospital Documents (PDF)</h2>
+        <p>You can view the documents below. A password is required to download.</p>
         <div class="pdf-container">
-            <a href="pdf/hospital-profile.pdf" target="_blank" class="pdf-card">
-                <h3>Hospital Profile</h3>
-                <p>View Hospital Profile</p>
-                <span>📄 Open PDF →</span>
-            </a>
-            <a href="pdf/services.pdf" target="_blank" class="pdf-card">
-                <h3>Hospital Services</h3>
-                <p>View our available services</p>
-                <span>📄 Open PDF →</span>
-            </a>
-            <a href="pdf/patient-guide.pdf" target="_blank" class="pdf-card">
-                <h3>Patient Guide</h3>
-                <p>Patient information and guidelines</p>
-                <span>📄 Open PDF →</span>
-            </a>
+            <div class="pdf-card">
+                <h3>Document 1</h3>
+                <p>General Information</p>
+                <button class="view-btn" onclick="alert('You can view this document here.\n\nTo download, click the button below.')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="documents/document1.pdf" data-name="Document 1" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="pdf-card">
+                <h3>Document 2</h3>
+                <p>Hospital Policies</p>
+                <button class="view-btn" onclick="alert('You can view this document here.\n\nTo download, click the button below.')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="documents/document2.pdf" data-name="Document 2" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
         </div>
     </section>
 
-    <!-- EXCEL FILES -->
-    <section class="section excel-section">
-        <h2>Hospital Documents</h2>
+    <!-- ✅ EXCEL FILES — MAY PASSWORD PROTECTION! -->
+    <section class="section">
+        <h2>Excel Files</h2>
+        <p>View available Excel files. A password is required to download.</p>
         <div class="excel-container">
-            <a href="excel/hospital-services.xlsx" download class="excel-card">
-                <h3>Hospital Services</h3>
-                <p>Download Hospital Services List</p>
-                <span>📊 Download Excel →</span>
-            </a>
-            <a href="excel/hospital-services.xlsx" download class="excel-card">
-                <h3>Hospital Services</h3>
-                <p>Download Hospital Services List</p>
-                <span>📊 Download Excel →</span>
-            </a>
+            <div class="excel-card">
+                <h3>Excel File 1</h3>
+                <p>Reports and Records</p>
+                <button class="view-btn" onclick="alert('Preview available here.\n\nTo download, click the button below.')">👁️ Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file1.xlsx" data-name="Excel File 1" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="excel-card">
+                <h3>Excel File 2</h3>
+                <p>Data and Statistics</p>
+                <button class="view-btn" onclick="alert('Preview available here.\n\nTo download, click the button below.')">👁️ Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file2.xlsx" data-name="Excel File 2" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
         </div>
     </section>
-	
 
     <!-- ABOUT -->
     <section id="about" class="section">
@@ -178,7 +179,7 @@
                 <span>View Details →</span>
             </div>
 
-            <!-- ✅ PHARMACY -->
+            <!-- PHARMACY -->
             <div class="service-card service-button" onclick="toggleService('pharmacy-details')">
                 <h3>Pharmacy Services</h3>
                 <p>Quality medicines and pharmaceutical services.</p>
@@ -334,7 +335,7 @@
         </div>
     </section>
 
-    <!-- ✅ PHARMACY DETAILS -->
+    <!-- PHARMACY -->
     <section id="pharmacy-details" class="service-details">
         <div class="section">
             <h2>Pharmacy Services</h2>
@@ -383,6 +384,23 @@
         </div>
     </div>
 
+    <!-- ✅ PASSWORD MODAL -->
+    <div id="passwordModal" class="price-modal" aria-hidden="true="true" style="display:none;">
+        <div class="price-modal-content">
+            <button class="price-modal-close" onclick="closePasswordModal()" aria-label="Close">×</button>
+            <h2>🔑 Enter Password to Download</h2>
+            <p id="fileToDownloadName"></p>
+            <div style="margin:15px 0;">
+                <input type="password" id="downloadPassword" placeholder="Enter password here..." style="width:100%;padding:10px;font-size:16px;">
+            </div>
+            <div style="display:flex;gap:10px;margin-top:15px;">
+                <button onclick="checkPassword()" style="padding:10px 20px;background:#2ecc71;color:white;border:none;border-radius:4px;cursor:pointer;">✅ Download</button>
+                <button onclick="closePasswordModal()" style="padding:10px 20px;background:#ccc;color:white;border:none;border-radius:4px;cursor:pointer;">Cancel</button>
+            </div>
+            <p id="passwordError" style="color:red;margin-top:10px;display:none;">❌ Incorrect password!</p>
+        </div>
+    </div>
+
     <!-- CONTACT -->
     <section id="contact" class="section">
         <h2>Contact Us</h2>
@@ -404,5 +422,46 @@
     <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
 
     <script src="script.js"></script>
+
+    <!-- ✅ PASSWORD PROTECTION SCRIPT -->
+    <script>
+        // ==========================================
+        // 🔐 PASSWORD SETTINGS
+        // ==========================================
+        const CORRECT_PASSWORD = "Stdgh@2024!"; // ← PALITAN MO LANG ITO!
+
+        let selectedFileUrl = "";
+
+        function requestPassword(button) {
+            selectedFileUrl = button.getAttribute("data-file");
+            const fileName = button.getAttribute("data-name");
+            document.getElementById("fileToDownloadName").textContent = "File: " + fileName;
+            document.getElementById("downloadPassword").value = "";
+            document.getElementById("passwordError").style.display = "none";
+            document.getElementById("passwordModal").style.display = "flex";
+            document.getElementById("passwordModal").setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePasswordModal() {
+            document.getElementById("passwordModal").style.display = "none";
+            document.getElementById("passwordModal").setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            selectedFileUrl = "";
+        }
+
+        function checkPassword() {
+            const input = document.getElementById("downloadPassword").value;
+            if (input === CORRECT_PASSWORD) {
+                // ✅ TAMA ANG PASSWORD — SIMULAN ANG DOWNLOAD
+                window.location.href = selectedFileUrl;
+                closePasswordModal();
+            } else {
+                // ❌ MALI ANG PASSWORD
+                document.getElementById("passwordError").style.display = "block";
+            }
+        }
+    </script>
+
 </body>
 </html>
