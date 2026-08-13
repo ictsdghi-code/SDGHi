@@ -27,6 +27,9 @@ function closePdfViewer(event) {
 // ==========================================
 // 🔒 PASSWORD PROTECTION FUNCTIONS
 // ==========================================
+// ==========================================
+// 🔒 PASSWORD PROTECTION FUNCTIONS — AYUSIN NA!
+// ==========================================
 function requestPassword(button) {
     console.log("Request password for:", button);
     selectedFileUrl = button.getAttribute("data-file");
@@ -34,15 +37,28 @@ function requestPassword(button) {
     document.getElementById("fileToDownloadName").textContent = "File: " + fileName;
     document.getElementById("downloadPassword").value = "";
     document.getElementById("passwordError").style.display = "none";
-    // ✅ GINAGAMIT NA ANG CLASS .active KAHIT SA PASSWORD MODAL
-    document.getElementById("passwordModal").style.display = "";
-    document.getElementById("passwordModal").classList.add("active");
+
+    // ✅ DIRETSONG NASA GITNA — WALANG DADAGDAG!
+    const modal = document.getElementById("passwordModal");
+    modal.style.display = "flex";
+    modal.style.alignItems = "center";
+    modal.style.justifyContent = "center";
+    modal.style.padding = "0";
+    modal.style.overflow = "hidden";
+
     document.getElementById("passwordModal").setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 }
 
 function closePasswordModal() {
-    document.getElementById("passwordModal").classList.remove("active");
+    const modal = document.getElementById("passwordModal");
+    modal.style.display = "none";
+    // Burahin ang ibang style para hindi makaapekto sa Price List
+    modal.style.alignItems = "";
+    modal.style.justifyContent = "";
+    modal.style.padding = "";
+    modal.style.overflow = "";
+
     document.getElementById("passwordModal").setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     selectedFileUrl = "";
