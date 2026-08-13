@@ -831,3 +831,68 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* PDF VIEWER MODAL — NAWALA KANINA, IDAGDAG ITO */
+.pdf-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.pdf-modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 95%;
+    height: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+}
+.pdf-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+    z-index: 10;
+}
+.pdf-close:hover { color: #000; }
+#pdfFileName {
+    padding: 15px 20px 5px;
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+#pdfViewerFrame {
+    flex: 1;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+}
+
+/* BUTTON STYLES */
+.view-btn, .download-btn {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.view-btn { background: #742080; color: white; }
+.view-btn:hover { background: #5c1767; }
+.download-btn { background: #27ae60; color: white; }
+.download-btn:hover { background: #1e8449; }
