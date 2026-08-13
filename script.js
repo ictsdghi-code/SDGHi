@@ -1,5 +1,6 @@
 // ==========================================
-// ✅ KUKUHA SA data/price-list.csv — WALANG CACHE!
+// ✅ INAYAWAN NA — TUMUTUGMA SA CSV MO!
+// CSV columns: Category,Service Code,Service Name,Description,Price,Status
 // ==========================================
 let priceData = [];
 let activePriceCategory = "";
@@ -26,11 +27,7 @@ const localPriceData = [
 	// ✅ IPD SERVICES
     {category:"Inpatient Services",code:"IP-001",service:"Private Room Rate",description:"Private room rate per day",price:3500,status:"Active"},
 	// ✅ MAB SERVICES
-    {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"},
-    // ✅ PHARMACY SERVICES
-    {category:"Pharmacy Services",code:"PHARM-001",service:"Prescription Medicine",description:"Dispensing of prescribed medicines",price:0,status:"Active"},
-    {category:"Pharmacy Services",code:"PHARM-002",service:"Over-the-Counter Medicines",description:"Available non-prescription medicines",price:0,status:"Active"},
-    {category:"Pharmacy Services",code:"PHARM-003",service:"Pharmacy Consultation",description:"Medication counseling and advice",price:150,status:"Active"}
+    {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"}
 ];
 
 const priceCategoryMap = {
@@ -44,35 +41,57 @@ const priceCategoryMap = {
 };
 
 // ==========================================
-// ✅ TINURO NA SA data/price-list.csv !
+// ✅ BINABASA NA ANG TAMA NG AYOS NG CSV MO!
 // ==========================================
 async function loadPriceListFromCSV() {
     try {
-      // ✅ TAMA NA ANG PATH: data/price-list.csv
-      const res = await fetch(`data/price-list.csv?v=${Date.now()}`); 
-      if (!res.ok) throw Error("Hindi makuha ang data/price-list.csv");
+      // ✅ Direktang kukuha sa tamang URL
+      const res = await fetch(`https://raw.githubusercontent.com/ictsdghi-code/SDGHi/main/data/price-list.csv?v=${Date.now()}`);
+      if (!res.ok) throw Error("Hindi makuha ang CSV");
       
       const text = await res.text();
       const lines = text.trim().split("\n").filter(line => line.trim() !== "");
       
       priceData = [];
+      // ✅ Laktawan ang unang linya (pamagat) → simula sa pangalawang linya
       for (let i = 1; i < lines.length; i++) {
-        const [category, code, service, description, price, status] = lines[i].split(",");
+        const row = parseCSVLine(lines[i]);
+        // ✅ TAMA NA ANG AYOS: Category,Service Code,Service Name,Description,Price,Status
         priceData.push({
-          category: category?.trim() || "",
-          code: code?.trim() || "",
-          service: service?.trim() || "",
-          description: description?.trim() || "",
-          price: price?.trim() || "0",
-          status: status?.trim() || "Active"
+          category: row[0]?.trim() || "",
+          code: row[1]?.trim() || "",
+          service: row[2]?.trim() || "",
+          description: row[3]?.trim() || "",
+          price: row[4]?.trim() || "0",
+          status: row[5]?.trim() || "Active"
         });
       }
       
-      console.log("✅ Presyo na-load mula sa data/price-list.csv!");
+      console.log("✅ Presyo na-load mula sa CSV!", priceData);
     } catch (err) {
       console.warn("⚠️ Gamit ang nakalagay na presyo:", err.message);
-      priceData = localPriceData; // ← Backup kung may error
+      priceData = localPriceData;
     }
+}
+
+// ✅ Tamang paghiwalay ng CSV (hindi magkakamali sa kuwit)
+function parseCSVLine(line) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      inQuotes = !inQuotes;
+    } else if (c === ',' && !inQuotes) {
+      result.push(current);
+      current = "";
+    } else {
+      current += c;
+    }
+  }
+  result.push(current);
+  return result;
 }
 
 function formatPrice(val) {
