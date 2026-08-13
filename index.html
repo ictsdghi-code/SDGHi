@@ -58,10 +58,19 @@
         </div>
     </section>
 
-    <!-- ✅ LIGHTBOX POPUP -->
+    <!-- ✅ LIGHTBOX FOR IMAGES -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="Enlarged Image">
+    </div>
+
+    <!-- ✅ PDF VIEWER — BUBUKAS KAPAG PININDOT ANG "VIEW" -->
+    <div id="pdfViewerModal" class="pdf-modal" style="display:none;" onclick="closePdfViewer(event)">
+        <div class="pdf-modal-content">
+            <span class="pdf-close" onclick="closePdfViewer()">&times;</span>
+            <h3 id="pdfFileName">Document</h3>
+            <iframe id="pdfViewerFrame" src="" frameborder="0"></iframe>
+        </div>
     </div>
 
     <!-- HOSPITAL VIDEOS -->
@@ -86,41 +95,41 @@
         </div>
     </section>
 
-    <!-- ✅ PDF DOCUMENTS — MAY PASSWORD PROTECTION! -->
+    <!-- ✅ PDF DOCUMENTS — MAY VIEWER + PASSWORD PROTECTION SA DOWNLOAD! -->
     <section id="documents" class="section">
         <h2>Hospital Documents (PDF)</h2>
-        <p>You can view the documents below. A password is required to download.</p>
+        <p>Click "View" to read the document. Password is required to download.</p>
         <div class="pdf-container">
             <div class="pdf-card">
                 <h3>Document 1</h3>
                 <p>General Information</p>
-                <button class="view-btn" onclick="alert('You can view this document here.\n\nTo download, click the button below.')">👁️ View</button>
-                <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Document 1" onclick="requestPassword(this)">🔒 Download</button>
+                <button class="view-btn" onclick="openPdfViewer('documents/document1.pdf', 'Document 1')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="documents/document1.pdf" data-name="Document 1" onclick="requestPassword(this)">🔒 Download</button>
             </div>
             <div class="pdf-card">
                 <h3>Document 2</h3>
                 <p>Hospital Policies</p>
-                <button class="view-btn" onclick="alert('You can view this document here.\n\nTo download, click the button below.')">👁️ View</button>
+                <button class="view-btn" onclick="openPdfViewer('documents/document2.pdf', 'Document 2')">👁️ View</button>
                 <button class="download-btn protected-download" data-file="documents/document2.pdf" data-name="Document 2" onclick="requestPassword(this)">🔒 Download</button>
             </div>
         </div>
     </section>
 
-    <!-- ✅ EXCEL FILES — MAY PASSWORD PROTECTION! -->
+    <!-- ✅ EXCEL FILES — PREVIEW BUTTON + PASSWORD PROTECTION -->
     <section class="section">
         <h2>Excel Files</h2>
-        <p>View available Excel files. A password is required to download.</p>
+        <p>Password is required to download.</p>
         <div class="excel-container">
             <div class="excel-card">
                 <h3>Excel File 1</h3>
                 <p>Reports and Records</p>
-                <button class="view-btn" onclick="alert('Preview available here.\n\nTo download, click the button below.')">👁️ Preview</button>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
                 <button class="download-btn protected-download" data-file="excel/file1.xlsx" data-name="Excel File 1" onclick="requestPassword(this)">🔒 Download</button>
             </div>
             <div class="excel-card">
                 <h3>Excel File 2</h3>
                 <p>Data and Statistics</p>
-                <button class="view-btn" onclick="alert('Preview available here.\n\nTo download, click the button below.')">👁️ Preview</button>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
                 <button class="download-btn protected-download" data-file="excel/file2.xlsx" data-name="Excel File 2" onclick="requestPassword(this)">🔒 Download</button>
             </div>
         </div>
@@ -423,15 +432,37 @@
 
     <script src="script.js"></script>
 
-    <!-- ✅ PASSWORD PROTECTION SCRIPT -->
+    <!-- ✅ PDF VIEWER + PASSWORD PROTECTION SCRIPTS -->
     <script>
         // ==========================================
-        // 🔐 PASSWORD SETTINGS
+        // 🔐 PASSWORD SETTINGS — PALITAN DITO KUNG GUSTO MO!
         // ==========================================
-        const CORRECT_PASSWORD = "Stdgh@2024!"; // ← PALITAN MO LANG ITO!
+        const CORRECT_PASSWORD = "Stdgh@2024!";
 
         let selectedFileUrl = "";
 
+        // ==========================================
+        // 📄 PDF VIEWER FUNCTIONS
+        // ==========================================
+        function openPdfViewer(pdfUrl, fileName) {
+            document.getElementById('pdfViewerFrame').src = pdfUrl;
+            document.getElementById('pdfFileName').textContent = fileName;
+            document.getElementById('pdfViewerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfViewer(event) {
+            // I-close lang kapag kinlik ang X o sa labas ng kahon
+            if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
+                document.getElementById('pdfViewerModal').style.display = 'none';
+                document.getElementById('pdfViewerFrame').src = ''; // I-clear para hindi patuloy na nagbabasa
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ==========================================
+        // 🔒 PASSWORD PROTECTION FUNCTIONS
+        // ==========================================
         function requestPassword(button) {
             selectedFileUrl = button.getAttribute("data-file");
             const fileName = button.getAttribute("data-name");
@@ -462,6 +493,61 @@
             }
         }
     </script>
+
+    <!-- ✅ KAILANGANG CSS PARA SA PDF VIEWER -->
+    <style>
+        /* PDF VIEWER MODAL */
+        .pdf-modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .pdf-modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 95%;
+            height: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .pdf-close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+            z-index: 10;
+        }
+        .pdf-close:hover {
+            color: #000;
+        }
+        #pdfFileName {
+            padding: 15px 20px 5px;
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        #pdfViewerFrame {
+            flex: 1;
+            width: 100%;
+            border: none;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
 
 </body>
 </html>
