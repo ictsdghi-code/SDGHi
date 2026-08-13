@@ -603,16 +603,22 @@ img {
 }
 
 /* ==============================
-   🔑 PASSWORD MODAL — MALIIT AT GITNA
+   🔑 PASSWORD MODAL — GITNA NG SCREEN
 ================================= */
 #passwordModal.price-modal.active {
-    align-items: center;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
 }
 
 #passwordModal .price-modal-content {
     max-width: 420px;
     width: 90%;
     margin: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
 }
 
 /* Common close button */
