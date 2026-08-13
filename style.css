@@ -606,13 +606,15 @@ img {
    🔑 PASSWORD MODAL — MALIIT AT GITNA
 ================================= */
 #passwordModal.price-modal.active {
-    align-items: center;
+    align-items: center !important;
 }
 
 #passwordModal .price-modal-content {
-    max-width: 420px;
-    width: 90%;
-    margin: 0;
+    max-width: 420px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    top: 0 !important;
 }
 
 /* Common close button */
