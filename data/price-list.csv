@@ -1,0 +1,13 @@
+﻿Category,Service Code,Service Name,Description,Price,Status
+Laboratory Services,LAB-001,Complete Blood Count (CBC),Hematology test,500,Active
+Laboratory Services,LAB-002,Urinalysis,Routine urine examination,150,Active
+Laboratory Services,LAB-003,Fecalysis,Stool examination,150,Active
+Laboratory Services,LAB-004,Blood Typing,ABO and Rh typing,200,Active
+Radiology Services,RAD-001,Chest X-Ray,Chest radiographic examination,500,Active
+Radiology Services,RAD-002,Abdominal X-Ray,Abdominal radiographic examination,600,Active
+Ultrasound Services,US-001,Whole Abdominal Ultrasound,Diagnostic ultrasound,1200,Active
+Ultrasound Services,US-002,Pelvic Ultrasound,Pelvic diagnostic ultrasound,1000,Active
+Emergency Services,ER-001,Emergency Consultation,Emergency medical consultation,500,Active
+Outpatient Services,OPD-001,Medical Consultation,Outpatient consultation,500,Active
+Inpatient Services,IP-001,Private Room Rate,Private room rate per day,3500,Active
+Medical Art Building (MAB),MAB-001,Specialist Consultation,Medical specialist consultation,800,Active

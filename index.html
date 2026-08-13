@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Dominic General Hospital, Inc.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <img src="logo.jpg" alt="Saint Dominic General Hospital Logo" class="hospital-logo">
+        <div class="header-text">
+            <h1>Saint Dominic General Hospital, Inc.</h1>
+            <p>Baloc, AH-26, Santo Domingo, Nueva Ecija</p>
+            <em>"Kaagapay Mo Sa Tamang Kalusugan"</em>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+        <h2>Welcome to Saint Dominic General Hospital, Inc.</h2>
+        <p>Providing quality healthcare services to our community.</p>
+        <button onclick="showMessage()">Learn More</button>
+    </section>
+
+    <!-- HOME GALLERY -->
+    <section class="section home-gallery">
+        <h2>Our Hospital</h2>
+        <p>Click the image to view it larger.</p>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="images/hospital1.jpg" alt="Saint Dominic General Hospital" class="gallery-img" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="images/CT-Scan Unit.jpg" alt="Saint Dominic General Hospital" class="gallery-img" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="images/hospital3.jpg" alt="Saint Dominic General Hospital" class="gallery-img" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="images/hospital4.jpg" alt="Saint Dominic General Hospital" class="gallery-img" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ LIGHTBOX POPUP -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged Image">
+    </div>
+
+    <!-- HOSPITAL VIDEOS -->
+    <section class="section hospital-video">
+        <h2>Our Hospital</h2>
+        <p>Learn more about Saint Dominic General Hospital, Inc.</p>
+        <div class="videos-container">
+            <div class="video-container">
+                <h3>Hospital Introduction</h3>
+                <video controls preload="metadata">
+                    <source src="videos/hospital1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-container">
+                <h3>Hospital Facilities</h3>
+                <video controls preload="metadata">
+                    <source src="videos/hospital2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF DOCUMENTS -->
+    <section class="section pdf-section">
+        <h2>Hospital Documents</h2>
+        <div class="pdf-container">
+            <a href="pdf/hospital-profile.pdf" target="_blank" class="pdf-card">
+                <h3>Hospital Profile</h3>
+                <p>View Hospital Profile</p>
+                <span>📄 Open PDF →</span>
+            </a>
+            <a href="pdf/services.pdf" target="_blank" class="pdf-card">
+                <h3>Hospital Services</h3>
+                <p>View our available services</p>
+                <span>📄 Open PDF →</span>
+            </a>
+            <a href="pdf/patient-guide.pdf" target="_blank" class="pdf-card">
+                <h3>Patient Guide</h3>
+                <p>Patient information and guidelines</p>
+                <span>📄 Open PDF →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- EXCEL FILES -->
+    <section class="section excel-section">
+        <h2>Hospital Documents</h2>
+        <div class="excel-container">
+            <a href="excel/hospital-services.xlsx" download class="excel-card">
+                <h3>Hospital Services</h3>
+                <p>Download Hospital Services List</p>
+                <span>📊 Download Excel →</span>
+            </a>
+            <a href="excel/hospital-services.xlsx" download class="excel-card">
+                <h3>Hospital Services</h3>
+                <p>Download Hospital Services List</p>
+                <span>📊 Download Excel →</span>
+            </a>
+        </div>
+    </section>
+	
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Saint Dominic General Hospital, Inc. is committed to providing quality healthcare services and ensuring the safety and well-being of every patient.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services-container">
+
+            <!-- EMERGENCY -->
+            <div class="service-card service-button" onclick="toggleService('emergency-details')">
+                <h3>Emergency Services</h3>
+                <p>24/7 emergency medical assistance.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- INPATIENT -->
+            <div class="service-card service-button" onclick="toggleService('inpatient-details')">
+                <h3>Inpatient Services</h3>
+                <p>Quality medical care and treatment for admitted patients.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- LABORATORY -->
+            <div class="service-card service-button" onclick="toggleService('laboratory-details')">
+                <h3>Laboratory</h3>
+                <p>Reliable laboratory and diagnostic services.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- RADIOLOGY -->
+            <div class="service-card service-button" onclick="toggleService('radiology-details')">
+                <h3>Radiology</h3>
+                <p>Modern diagnostic imaging services.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- OUTPATIENT -->
+            <div class="service-card service-button" onclick="toggleService('outpatient-details')">
+                <h3>Outpatient Services</h3>
+                <p>Quality medical consultation and treatment.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- MAB -->
+            <div class="service-card service-button" onclick="toggleService('mab-details')">
+                <h3>Medical Art Building (MAB)</h3>
+                <p>Specialized medical consultation and healthcare services.</p>
+                <span>View Details →</span>
+            </div>
+
+            <!-- ✅ PHARMACY -->
+            <div class="service-card service-button" onclick="toggleService('pharmacy-details')">
+                <h3>Pharmacy Services</h3>
+                <p>Quality medicines and pharmaceutical services.</p>
+                <span>View Details →</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICE DETAILS -->
+
+    <!-- EMERGENCY -->
+    <section id="emergency-details" class="service-details">
+        <div class="section">
+            <h2>Emergency Services</h2>
+            <p>Our Emergency Department provides immediate medical assistance for patients requiring urgent care.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>24/7 Emergency Care</h3>
+                    <p>Emergency medical assistance is available 24 hours a day, 7 days a week.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Emergency Consultation</h3>
+                    <p>Patients can receive immediate assessment and medical attention.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Emergency Assistance</h3>
+                    <p>Our healthcare team is available to assist patients during emergencies.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('emergency')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('emergency-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- INPATIENT -->
+    <section id="inpatient-details" class="service-details">
+        <div class="section">
+            <h2>Inpatient Services</h2>
+            <p>Our Inpatient Services provide medical care and treatment for patients who require hospital admission.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Patient Rooms</h3>
+                    <p>Comfortable accommodations for admitted patients.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Medical Care</h3>
+                    <p>Continuous medical care and monitoring by healthcare professionals.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Nursing Services</h3>
+                    <p>Professional nursing care throughout the patient's hospital stay.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('inpatient')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('inpatient-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- LABORATORY -->
+    <section id="laboratory-details" class="service-details">
+        <div class="section">
+            <h2>Laboratory Services</h2>
+            <p>Our Laboratory provides diagnostic testing services to support accurate diagnosis and patient care.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Laboratory Tests</h3>
+                    <p>Various laboratory examinations are available based on the patient's needs.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Diagnostic Testing</h3>
+                    <p>Reliable testing services to assist physicians in diagnosis and treatment.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Laboratory Assistance</h3>
+                    <p>Our laboratory staff are available to assist patients with laboratory procedures.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('laboratory')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('laboratory-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- RADIOLOGY -->
+    <section id="radiology-details" class="service-details">
+        <div class="section">
+            <h2>Radiology Services</h2>
+            <p>Our Radiology Department provides diagnostic imaging services to support patient diagnosis and treatment.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Diagnostic Imaging</h3>
+                    <p>Imaging services are available to assist physicians in evaluating patients.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Radiology Procedures</h3>
+                    <p>Various diagnostic imaging procedures may be available depending on the patient's needs.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Radiology Assistance</h3>
+                    <p>Professional assistance is provided throughout the imaging procedure.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('radiology')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('radiology-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- OUTPATIENT -->
+    <section id="outpatient-details" class="service-details">
+        <div class="section">
+            <h2>Outpatient Services</h2>
+            <p>Our Outpatient Services provide consultation, assessment, and treatment without hospital admission.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Medical Consultation</h3>
+                    <p>Patients can consult with healthcare professionals for their medical concerns.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Follow-up Consultation</h3>
+                    <p>Follow-up consultations are available based on the physician's recommendations.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Patient Assistance</h3>
+                    <p>Staff are available to assist patients throughout their outpatient visit.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('outpatient')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('outpatient-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- MAB -->
+    <section id="mab-details" class="service-details">
+        <div class="section">
+            <h2>Medical Art Building (MAB)</h2>
+            <p>The Medical Art Building provides specialized medical consultation and healthcare services.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Medical Specialists</h3>
+                    <p>Information about doctors and specialists available at the Medical Art Building.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Clinic Schedule</h3>
+                    <p>View clinic schedules and consultation hours.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Appointments</h3>
+                    <p>Contact the hospital for appointment schedules and inquiries.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('mab')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('mab-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- ✅ PHARMACY DETAILS -->
+    <section id="pharmacy-details" class="service-details">
+        <div class="section">
+            <h2>Pharmacy Services</h2>
+            <p>Our Pharmacy provides quality medicines and pharmaceutical services to ensure safe and effective medication use.</p>
+            <div class="details-container">
+                <div class="details-card">
+                    <h3>Medicines & Supplies</h3>
+                    <p>Wide range of quality medicines and medical supplies available.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Prescription Services</h3>
+                    <p>Professional prescription dispensing and pharmaceutical counseling.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Pharmacy Assistance</h3>
+                    <p>Trained pharmacy staff to assist with medicine inquiries and prescriptions.</p>
+                </div>
+            </div>
+            <button class="price-list-button" onclick="showPriceList('pharmacy')">📋 View Price List</button>
+            <button class="close-service" onclick="toggleService('pharmacy-details')">Hide Details</button>
+        </div>
+    </section>
+
+    <!-- PRICE LIST MODAL -->
+    <div id="priceListModal" class="price-modal" aria-hidden="true">
+        <div class="price-modal-content">
+            <button class="price-modal-close" onclick="closePriceList()" aria-label="Close">×</button>
+            <h2 id="priceModalTitle">Price List</h2>
+            <p id="priceModalDescription"></p>
+            <div class="price-search-wrap">
+                <input type="text" id="modalPriceSearch" placeholder="🔎 Search service..." aria-label="Search price list">
+            </div>
+            <div class="price-table-wrapper">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Service Code</th>
+                            <th>Service Name / Description</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalPriceTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>
+            Saint Dominic General Hospital, Inc.<br>
+            Baloc, AH-26, Santo Domingo, Nueva Ecija.<br>
+            Email: sdghi.officail@gmail.com<br>
+            Contact No.: 0995-121-3979
+        </p>
+        <p>For inquiries, please contact the hospital.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Saint Dominic General Hospital, Inc.</p>
+        <p>ICT Department</p>
+    </footer>
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
