@@ -64,7 +64,7 @@
         <img id="lightbox-img" src="" alt="Enlarged Image">
     </div>
 
-    <!-- ✅ PDF VIEWER MODAL -->
+    <!-- ✅ PDF VIEWER — BUBUKAS KAPAG PININDOT ANG "VIEW" -->
     <div id="pdfViewerModal" class="pdf-modal" style="display:none;" onclick="closePdfViewer(event)">
         <div class="pdf-modal-content">
             <span class="pdf-close" onclick="closePdfViewer()">&times;</span>
@@ -95,16 +95,42 @@
         </div>
     </section>
 
-    <!-- ✅ PDF DOCUMENTS SECTION -->
+    <!-- ✅ PDF DOCUMENTS — MAY VIEWER + PASSWORD PROTECTION SA DOWNLOAD! -->
     <section id="documents" class="section">
-        <h2>Hospital Documents</h2>
+        <h2>Hospital Documents (PDF)</h2>
         <p>Click "View" to read the document. Password is required to download.</p>
         <div class="pdf-container">
             <div class="pdf-card">
-                <h3>Room Rates & Inclusions</h3>
-                <p>Room rates and amenities</p>
-                <button class="view-btn" onclick="openPdfViewer('pdf/hospital-profile.pdf', 'Room Rates & Inclusions')">👁️ View</button>
-                <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Room Rates & Inclusions" onclick="requestPassword(this)">🔒 Download</button>
+                <h3>Document 1</h3>
+                <p>General Information</p>
+                <button class="view-btn" onclick="openPdfViewer('documents/document1.pdf', 'Document 1')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="documents/document1.pdf" data-name="Document 1" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="pdf-card">
+                <h3>Document 2</h3>
+                <p>Hospital Policies</p>
+                <button class="view-btn" onclick="openPdfViewer('documents/document2.pdf', 'Document 2')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="documents/document2.pdf" data-name="Document 2" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ EXCEL FILES — PREVIEW BUTTON + PASSWORD PROTECTION -->
+    <section class="section">
+        <h2>Excel Files</h2>
+        <p>Password is required to download.</p>
+        <div class="excel-container">
+            <div class="excel-card">
+                <h3>Excel File 1</h3>
+                <p>Reports and Records</p>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file1.xlsx" data-name="Excel File 1" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="excel-card">
+                <h3>Excel File 2</h3>
+                <p>Data and Statistics</p>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file2.xlsx" data-name="Excel File 2" onclick="requestPassword(this)">🔒 Download</button>
             </div>
         </div>
     </section>
@@ -416,27 +442,26 @@
         let selectedFileUrl = "";
 
         // ==========================================
-        // 📄 PDF VIEWER — WALANG TOOLBAR! PURONG PDF LANG!
+        // 📄 PDF VIEWER FUNCTIONS
         // ==========================================
         function openPdfViewer(pdfUrl, fileName) {
-            // ✅ Itinatago ang toolbar at pindutan sa loob ng PDF
-            const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
-            document.getElementById('pdfViewerFrame').src = cleanUrl;
+            document.getElementById('pdfViewerFrame').src = pdfUrl;
             document.getElementById('pdfFileName').textContent = fileName;
             document.getElementById('pdfViewerModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closePdfViewer(event) {
+            // I-close lang kapag kinlik ang X o sa labas ng kahon
             if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
                 document.getElementById('pdfViewerModal').style.display = 'none';
-                document.getElementById('pdfViewerFrame').src = '';
+                document.getElementById('pdfViewerFrame').src = ''; // I-clear para hindi patuloy na nagbabasa
                 document.body.style.overflow = '';
             }
         }
 
         // ==========================================
-        // 🔒 PASSWORD PROTECTION
+        // 🔒 PASSWORD PROTECTION FUNCTIONS
         // ==========================================
         function requestPassword(button) {
             selectedFileUrl = button.getAttribute("data-file");
@@ -459,16 +484,19 @@
         function checkPassword() {
             const input = document.getElementById("downloadPassword").value;
             if (input === CORRECT_PASSWORD) {
+                // ✅ TAMA ANG PASSWORD — SIMULAN ANG DOWNLOAD
                 window.location.href = selectedFileUrl;
                 closePasswordModal();
             } else {
+                // ❌ MALI ANG PASSWORD
                 document.getElementById("passwordError").style.display = "block";
             }
         }
     </script>
 
-    <!-- ✅ PDF VIEWER CSS -->
+    <!-- ✅ KAILANGANG CSS PARA SA PDF VIEWER -->
     <style>
+        /* PDF VIEWER MODAL */
         .pdf-modal {
             position: fixed;
             z-index: 1000;
@@ -476,7 +504,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.85);
+            background-color: rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -487,8 +515,8 @@
             background-color: white;
             border-radius: 8px;
             width: 95%;
-            height: 92%;
-            max-width: 950px;
+            height: 90%;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -503,7 +531,6 @@
             cursor: pointer;
             color: #666;
             z-index: 10;
-            line-height: 1;
         }
         .pdf-close:hover {
             color: #000;
@@ -513,7 +540,6 @@
             margin: 0;
             font-size: 18px;
             color: #333;
-            padding-right: 40px;
         }
         #pdfViewerFrame {
             flex: 1;
