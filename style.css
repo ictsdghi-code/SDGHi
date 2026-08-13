@@ -436,7 +436,6 @@ img {
     background: white;
 }
 
-/* PDF Print protection */
 .pdf-modal {
     -webkit-print-color-adjust: exact;
 }
@@ -550,28 +549,6 @@ img {
 }
 
 /* ==============================
-   CLICKABLE PRICE LIST
-================================= */
-.price-list-button {
-    margin-top: 20px;
-    margin-right: 8px;
-    background: #742080;
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.price-list-button:hover {
-    background: #5c1767;
-    transform: translateY(-2px);
-}
-
-/* ==============================
    📋 PRICE LIST MODAL — MALAPAD
 ================================= */
 .price-modal {
@@ -590,7 +567,6 @@ img {
     justify-content: center;
 }
 
-/* Price List content — LAPAD */
 .price-modal-content {
     background: white;
     padding: 25px;
@@ -603,26 +579,23 @@ img {
 }
 
 /* ==============================
-   🔑 PASSWORD MODAL — MALIIT AT GITNA
+   🔑 PASSWORD MODAL — SIGURADONG NASA GITNA
 ================================= */
 #passwordModal.price-modal.active {
     align-items: center !important;
     justify-content: center !important;
-    display: flex !important;
 }
 
 #passwordModal .price-modal-content {
+    position: fixed !important;
+    top: 50vh !important;
+    left: 50vw !important;
+    transform: translate(-50%, -50%) !important;
     max-width: 420px !important;
     width: 90% !important;
     margin: 0 !important;
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    transform: translate(-50%, -50%) !important;
 }
 
-/* Common close button */
 .price-modal-close {
     position: absolute;
     top: 12px;
@@ -805,8 +778,8 @@ footer {
         padding: 22px 15px;
     }
     #passwordModal .price-modal-content {
-        width: 95%;
-        max-width: 340px;
+        width: 95% !important;
+        max-width: 340px !important;
     }
     .price-list-button {
         width: 100%;
