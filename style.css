@@ -86,7 +86,7 @@ img {
 
 .nav-container {
     display: flex !important;
-    justify-content: center !important; /* ← Hindi na sa gilid, nasa gitna na lahat */
+    justify-content:  !important; /* ← Hindi na sa gilid, nasa gitna na lahat */
     align-items: center !important;
     flex-wrap: wrap;
     gap: 20px !important; /* ← Ito ang layo ng bawat button — pwede mong baguhin: 30, 40, 50 */
