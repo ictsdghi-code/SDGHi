@@ -49,7 +49,7 @@ const priceCategoryMap = {
 async function loadPriceListFromCSV() {
     try {
       // ✅ TAMA NA ANG PATH: data/price-list.csv
-      const res = await fetch(`data/price-list.csv?v=${Date.now()}`);
+      const res = await fetch(`data/price-list.csv?v=${Date.now()}`); 
       if (!res.ok) throw Error("Hindi makuha ang data/price-list.csv");
       
       const text = await res.text();
