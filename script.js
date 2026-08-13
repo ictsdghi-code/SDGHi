@@ -1,11 +1,11 @@
 // ==========================================
-// ✅ KASAMA NA ANG PHARMACY — GUMAGANA AGAD!
+// ✅ KUKUHA SA data/price-list.csv — WALANG CACHE!
 // ==========================================
 let priceData = [];
 let activePriceCategory = "";
 
 // ==========================================
-// 👇 DITO MO PALITAN ANG PRESYO!
+// 👇 KUNG HINDI MAKUHA ANG CSV, ITO ANG GAGAMITIN
 // ==========================================
 const localPriceData = [
 	// ✅ LABORATORY SERVICES
@@ -43,9 +43,36 @@ const priceCategoryMap = {
     pharmacy: "Pharmacy Services"
 };
 
+// ==========================================
+// ✅ TINURO NA SA data/price-list.csv !
+// ==========================================
 async function loadPriceListFromCSV() {
-    priceData = localPriceData;
-    console.log("✅ Ginagamit ang presyo mula sa loob ng script!");
+    try {
+      // ✅ TAMA NA ANG PATH: data/price-list.csv
+      const res = await fetch(`data/price-list.csv?v=${Date.now()}`);
+      if (!res.ok) throw Error("Hindi makuha ang data/price-list.csv");
+      
+      const text = await res.text();
+      const lines = text.trim().split("\n").filter(line => line.trim() !== "");
+      
+      priceData = [];
+      for (let i = 1; i < lines.length; i++) {
+        const [category, code, service, description, price, status] = lines[i].split(",");
+        priceData.push({
+          category: category?.trim() || "",
+          code: code?.trim() || "",
+          service: service?.trim() || "",
+          description: description?.trim() || "",
+          price: price?.trim() || "0",
+          status: status?.trim() || "Active"
+        });
+      }
+      
+      console.log("✅ Presyo na-load mula sa data/price-list.csv!");
+    } catch (err) {
+      console.warn("⚠️ Gamit ang nakalagay na presyo:", err.message);
+      priceData = localPriceData; // ← Backup kung may error
+    }
 }
 
 function formatPrice(val) {
@@ -91,7 +118,6 @@ function showMessage() {
     alert("Welcome to Saint Dominic General Hospital, Inc.!");
 }
 
-// ✅ ITO ANG GUMAGAWA NG CLICKABLE — PAREHO SA LAHAT NG SERBISYO
 function toggleService(serviceId) {
     console.log("Binuksan:", serviceId);
     const serviceSection = document.getElementById(serviceId);
@@ -117,6 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.key === "Escape") closePriceList();
     });
 });
+
 // ===== LIGHTBOX FUNCTIONS =====
 function openLightbox(imgSrc) {
   const lightbox = document.getElementById('lightbox');
@@ -131,8 +158,8 @@ function closeLightbox() {
   lightbox.style.display = 'none';
   document.body.style.overflow = 'auto';
 }
+
 // ===== SCROLL TO TOP FUNCTION =====
-// Lumalabas ang button kapag pababa na
 window.onscroll = function() {
   const btn = document.getElementById('scrollTopBtn');
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -142,7 +169,6 @@ window.onscroll = function() {
   }
 };
 
-// Babalik sa itaas nang maayos
 function scrollToTop() {
   window.scrollTo({
     top: 0,
