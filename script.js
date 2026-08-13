@@ -18,10 +18,9 @@ const priceCategoryMap = {
 };
 
 // ==========================================
-// 📄 PDF VIEWER FUNCTIONS — WALANG TOOLBAR!
+// 📄 PDF VIEWER FUNCTIONS
 // ==========================================
 function openPdfViewer(pdfUrl, fileName) {
-    // ✅ Itinatago ang toolbar sa loob ng PDF
     const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
     document.getElementById('pdfViewerFrame').src = cleanUrl;
     document.getElementById('pdfFileName').textContent = fileName;
@@ -69,10 +68,11 @@ function checkPassword() {
 }
 
 // ==========================================
-// 💰 PRICE LIST — BINABASA ANG CSV + ITINAGO ANG INACTIVE
+// 💰 KUKUNIN NA LANG MULA SA CSV — WALANG PRESYO DITO!
 // ==========================================
 async function loadPriceListFromCSV() {
     try {
+      // ✅ Kukunin ang presyo mula sa UPLOADED mong CSV sa GitHub
       const res = await fetch(`https://raw.githubusercontent.com/ictsdghi-code/SDGHi/main/data/price-list.csv?v=${Date.now()}`);
       if (!res.ok) throw Error("Hindi makuha ang CSV");
       
@@ -83,7 +83,10 @@ async function loadPriceListFromCSV() {
       for (let i = 1; i < lines.length; i++) {
         const row = parseCSVLine(lines[i]);
         const status = (row[5] || "").trim().toLowerCase();
+        
+        // ✅ IPAPAKITA LANG KUNG "Active" — itatago ang Inactive
         if (status !== "active") continue;
+
         priceData.push({
           category: row[0]?.trim() || "",
           code: row[1]?.trim() || "",
@@ -93,28 +96,16 @@ async function loadPriceListFromCSV() {
           status: status
         });
       }
+      
       console.log("✅ Presyo na-load mula sa CSV!", priceData);
     } catch (err) {
-      console.warn("⚠️ Gamit ang lokal na presyo:", err.message);
-      priceData = [
-        {category:"Laboratory Services",code:"LAB-001",service:"Complete Blood Count (CBC)",description:"Hematology test",price:850,status:"Active"},
-        {category:"Laboratory Services",code:"LAB-002",service:"Urinalysis",description:"Routine urine examination",price:150,status:"Active"},
-        {category:"Laboratory Services",code:"LAB-003",service:"Fecalysis",description:"Stool examination",price:150,status:"Active"},
-        {category:"Laboratory Services",code:"LAB-004",service:"Blood Typing",description:"ABO and Rh typing",price:200,status:"Active"},
-        {category:"Radiology Services",code:"RAD-001",service:"Chest X-Ray",description:"Chest radiographic examination",price:500,status:"Active"},
-        {category:"Radiology Services",code:"RAD-002",service:"Abdominal X-Ray",description:"Abdominal radiographic examination",price:600,status:"Active"},
-        {category:"Ultrasound Services",code:"US-001",service:"Whole Abdominal Ultrasound",description:"Diagnostic ultrasound",price:1200,status:"Active"},
-        {category:"Ultrasound Services",code:"US-002",service:"Pelvic Ultrasound",description:"Pelvic diagnostic ultrasound",price:1000,status:"Active"},
-        {category:"Emergency Services",code:"ER-001",service:"Emergency Consultation",description:"Emergency medical consultation",price:500,status:"Active"},
-        {category:"Outpatient Services",code:"OPD-001",service:"Medical Consultation",description:"Outpatient consultation",price:500,status:"Active"},
-        {category:"Inpatient Services",code:"IP-001",service:"Private Room Rate",description:"Private room rate per day",price:3500,status:"Active"},
-        {category:"Medical Art Building (MAB)",code:"MAB-001",service:"Specialist Consultation",description:"Medical specialist consultation",price:800,status:"Active"},
-        {category:"Pharmacy Services",code:"PHARM-004",service:"Paracetamol 500mg",description:"Tablet per piece",price:12.50,status:"Active"},
-        {category:"Pharmacy Services",code:"PHARM-005",service:"Amoxicillin Capsule 500mg",description:"Antibiotic per capsule",price:18.00,status:"Active"}
-      ].filter(item => item.status.toLowerCase() === "active");
+      alert("⚠️ Hindi mabasa ang price list. Siguraduhing na-upload ang CSV!");
+      console.error("Error:", err.message);
+      priceData = []; // ❌ Wala nang nakalagay na presyo dito
     }
 }
 
+// ✅ Tamang paghiwalay ng CSV
 function parseCSVLine(line) {
   const result = [];
   let current = "";
@@ -208,10 +199,10 @@ window.onscroll = function() {
 };
 
 // ==========================================
-// 🚀 INITIALIZE
+// 🚀 SIMULAN — MAGBASA NG CSV
 // ==========================================
 document.addEventListener("DOMContentLoaded", async () => {
-    await loadPriceListFromCSV();
+    await loadPriceListFromCSV(); // ✅ Mula sa CSV na lahat!
     document.getElementById("modalPriceSearch").addEventListener("input", renderModalPrices);
     document.getElementById("priceListModal").addEventListener("click", e => {
         if (e.target.id === "priceListModal") closePriceList();
