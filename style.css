@@ -882,3 +882,21 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* ==========================================
+   🔑 PASSWORD MODAL — SIGURADONG NASA GITNA!
+   ========================================== */
+#passwordModal {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+#passwordModal .price-modal-content {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    position: relative !important;
+    max-width: 420px !important;
+    width: 90% !important;
+}
