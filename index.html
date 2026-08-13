@@ -64,7 +64,7 @@
         <img id="lightbox-img" src="" alt="Enlarged Image">
     </div>
 
-    <!-- ✅ PDF VIEWER MODAL -->
+    <!-- ✅ PDF VIEWER — BUBUKAS KAPAG PININDOT ANG "VIEW" -->
     <div id="pdfViewerModal" class="pdf-modal" style="display:none;" onclick="closePdfViewer(event)">
         <div class="pdf-modal-content">
             <span class="pdf-close" onclick="closePdfViewer()">&times;</span>
@@ -95,16 +95,42 @@
         </div>
     </section>
 
-    <!-- ✅ PDF DOCUMENTS SECTION — TAMA NA ANG LOKASYON! -->
+    <!-- ✅ PDF DOCUMENTS — MAY VIEWER + PASSWORD PROTECTION SA DOWNLOAD! -->
     <section id="documents" class="section">
-        <h2>Hospital Documents</h2>
+        <h2>Hospital Documents (PDF)</h2>
         <p>Click "View" to read the document. Password is required to download.</p>
         <div class="pdf-container">
             <div class="pdf-card">
-                <h3>Room Rates & Inclusions</h3>
-                <p>Room rates and amenities</p>
+                <h3>Document 1</h3>
+                <p>General Information</p>
                 <button class="view-btn" onclick="openPdfViewer('pdf/hospital-profile.pdf', 'Room Rates & Inclusions')">👁️ View</button>
                 <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Room Rates & Inclusions" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="pdf-card">
+                <h3>Document 2</h3>
+                <p>Hospital Policies</p>
+                <button class="view-btn" onclick="openPdfViewer('pdf/hospital-profile.pdf', 'Room Rates & Inclusions')">👁️ View</button>
+                <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Room Rates & Inclusions" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ EXCEL FILES — PREVIEW BUTTON + PASSWORD PROTECTION -->
+    <section class="section">
+        <h2>Excel Files</h2>
+        <p>Password is required to download.</p>
+        <div class="excel-container">
+            <div class="excel-card">
+                <h3>Excel File 1</h3>
+                <p>Reports and Records</p>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file1.xlsx" data-name="Excel File 1" onclick="requestPassword(this)">🔒 Download</button>
+            </div>
+            <div class="excel-card">
+                <h3>Excel File 2</h3>
+                <p>Data and Statistics</p>
+                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
+                <button class="download-btn protected-download" data-file="excel/file2.xlsx" data-name="Excel File 2" onclick="requestPassword(this)">🔒 Download</button>
             </div>
         </div>
     </section>
@@ -119,137 +145,223 @@
     <section id="services" class="section">
         <h2>Our Services</h2>
         <div class="services-container">
+
+            <!-- EMERGENCY -->
             <div class="service-card service-button" onclick="toggleService('emergency-details')">
                 <h3>Emergency Services</h3>
                 <p>24/7 emergency medical assistance.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- INPATIENT -->
             <div class="service-card service-button" onclick="toggleService('inpatient-details')">
                 <h3>Inpatient Services</h3>
                 <p>Quality medical care and treatment for admitted patients.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- LABORATORY -->
             <div class="service-card service-button" onclick="toggleService('laboratory-details')">
                 <h3>Laboratory</h3>
                 <p>Reliable laboratory and diagnostic services.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- RADIOLOGY -->
             <div class="service-card service-button" onclick="toggleService('radiology-details')">
                 <h3>Radiology</h3>
                 <p>Modern diagnostic imaging services.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- OUTPATIENT -->
             <div class="service-card service-button" onclick="toggleService('outpatient-details')">
                 <h3>Outpatient Services</h3>
                 <p>Quality medical consultation and treatment.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- MAB -->
             <div class="service-card service-button" onclick="toggleService('mab-details')">
                 <h3>Medical Art Building (MAB)</h3>
                 <p>Specialized medical consultation and healthcare services.</p>
                 <span>View Details →</span>
             </div>
+
+            <!-- PHARMACY -->
             <div class="service-card service-button" onclick="toggleService('pharmacy-details')">
                 <h3>Pharmacy Services</h3>
                 <p>Quality medicines and pharmaceutical services.</p>
                 <span>View Details →</span>
             </div>
+
         </div>
     </section>
 
     <!-- SERVICE DETAILS -->
+
+    <!-- EMERGENCY -->
     <section id="emergency-details" class="service-details">
         <div class="section">
             <h2>Emergency Services</h2>
             <p>Our Emergency Department provides immediate medical assistance for patients requiring urgent care.</p>
             <div class="details-container">
-                <div class="details-card"><h3>24/7 Emergency Care</h3><p>Emergency medical assistance is available 24 hours a day, 7 days a week.</p></div>
-                <div class="details-card"><h3>Emergency Consultation</h3><p>Patients can receive immediate assessment and medical attention.</p></div>
-                <div class="details-card"><h3>Emergency Assistance</h3><p>Our healthcare team is available to assist patients during emergencies.</p></div>
+                <div class="details-card">
+                    <h3>24/7 Emergency Care</h3>
+                    <p>Emergency medical assistance is available 24 hours a day, 7 days a week.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Emergency Consultation</h3>
+                    <p>Patients can receive immediate assessment and medical attention.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Emergency Assistance</h3>
+                    <p>Our healthcare team is available to assist patients during emergencies.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('emergency')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('emergency-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- INPATIENT -->
     <section id="inpatient-details" class="service-details">
         <div class="section">
             <h2>Inpatient Services</h2>
             <p>Our Inpatient Services provide medical care and treatment for patients who require hospital admission.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Patient Rooms</h3><p>Comfortable accommodations for admitted patients.</p></div>
-                <div class="details-card"><h3>Medical Care</h3><p>Continuous medical care and monitoring by healthcare professionals.</p></div>
-                <div class="details-card"><h3>Nursing Services</h3><p>Professional nursing care throughout the patient's hospital stay.</p></div>
+                <div class="details-card">
+                    <h3>Patient Rooms</h3>
+                    <p>Comfortable accommodations for admitted patients.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Medical Care</h3>
+                    <p>Continuous medical care and monitoring by healthcare professionals.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Nursing Services</h3>
+                    <p>Professional nursing care throughout the patient's hospital stay.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('inpatient')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('inpatient-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- LABORATORY -->
     <section id="laboratory-details" class="service-details">
         <div class="section">
             <h2>Laboratory Services</h2>
             <p>Our Laboratory provides diagnostic testing services to support accurate diagnosis and patient care.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Laboratory Tests</h3><p>Various laboratory examinations are available based on the patient's needs.</p></div>
-                <div class="details-card"><h3>Diagnostic Testing</h3><p>Reliable testing services to assist physicians in diagnosis and treatment.</p></div>
-                <div class="details-card"><h3>Laboratory Assistance</h3><p>Our laboratory staff are available to assist patients with laboratory procedures.</p></div>
+                <div class="details-card">
+                    <h3>Laboratory Tests</h3>
+                    <p>Various laboratory examinations are available based on the patient's needs.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Diagnostic Testing</h3>
+                    <p>Reliable testing services to assist physicians in diagnosis and treatment.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Laboratory Assistance</h3>
+                    <p>Our laboratory staff are available to assist patients with laboratory procedures.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('laboratory')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('laboratory-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- RADIOLOGY -->
     <section id="radiology-details" class="service-details">
         <div class="section">
             <h2>Radiology Services</h2>
             <p>Our Radiology Department provides diagnostic imaging services to support patient diagnosis and treatment.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Diagnostic Imaging</h3><p>Imaging services are available to assist physicians in evaluating patients.</p></div>
-                <div class="details-card"><h3>Radiology Procedures</h3><p>Various diagnostic imaging procedures may be available depending on the patient's needs.</p></div>
-                <div class="details-card"><h3>Radiology Assistance</h3><p>Professional assistance is provided throughout the imaging procedure.</p></div>
+                <div class="details-card">
+                    <h3>Diagnostic Imaging</h3>
+                    <p>Imaging services are available to assist physicians in evaluating patients.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Radiology Procedures</h3>
+                    <p>Various diagnostic imaging procedures may be available depending on the patient's needs.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Radiology Assistance</h3>
+                    <p>Professional assistance is provided throughout the imaging procedure.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('radiology')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('radiology-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- OUTPATIENT -->
     <section id="outpatient-details" class="service-details">
         <div class="section">
             <h2>Outpatient Services</h2>
             <p>Our Outpatient Services provide consultation, assessment, and treatment without hospital admission.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Medical Consultation</h3><p>Patients can consult with healthcare professionals for their medical concerns.</p></div>
-                <div class="details-card"><h3>Follow-up Consultation</h3><p>Follow-up consultations are available based on the physician's recommendations.</p></div>
-                <div class="details-card"><h3>Patient Assistance</h3><p>Staff are available to assist patients throughout their outpatient visit.</p></div>
+                <div class="details-card">
+                    <h3>Medical Consultation</h3>
+                    <p>Patients can consult with healthcare professionals for their medical concerns.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Follow-up Consultation</h3>
+                    <p>Follow-up consultations are available based on the physician's recommendations.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Patient Assistance</h3>
+                    <p>Staff are available to assist patients throughout their outpatient visit.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('outpatient')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('outpatient-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- MAB -->
     <section id="mab-details" class="service-details">
         <div class="section">
             <h2>Medical Art Building (MAB)</h2>
             <p>The Medical Art Building provides specialized medical consultation and healthcare services.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Medical Specialists</h3><p>Information about doctors and specialists available at the Medical Art Building.</p></div>
-                <div class="details-card"><h3>Clinic Schedule</h3><p>View clinic schedules and consultation hours.</p></div>
-                <div class="details-card"><h3>Appointments</h3><p>Contact the hospital for appointment schedules and inquiries.</p></div>
+                <div class="details-card">
+                    <h3>Medical Specialists</h3>
+                    <p>Information about doctors and specialists available at the Medical Art Building.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Clinic Schedule</h3>
+                    <p>View clinic schedules and consultation hours.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Appointments</h3>
+                    <p>Contact the hospital for appointment schedules and inquiries.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('mab')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('mab-details')">Hide Details</button>
         </div>
     </section>
 
+    <!-- PHARMACY -->
     <section id="pharmacy-details" class="service-details">
         <div class="section">
             <h2>Pharmacy Services</h2>
             <p>Our Pharmacy provides quality medicines and pharmaceutical services to ensure safe and effective medication use.</p>
             <div class="details-container">
-                <div class="details-card"><h3>Medicines & Supplies</h3><p>Wide range of quality medicines and medical supplies available.</p></div>
-                <div class="details-card"><h3>Prescription Services</h3><p>Professional prescription dispensing and pharmaceutical counseling.</p></div>
-                <div class="details-card"><h3>Pharmacy Assistance</h3><p>Trained pharmacy staff to assist with medicine inquiries and prescriptions.</p></div>
+                <div class="details-card">
+                    <h3>Medicines & Supplies</h3>
+                    <p>Wide range of quality medicines and medical supplies available.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Prescription Services</h3>
+                    <p>Professional prescription dispensing and pharmaceutical counseling.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Pharmacy Assistance</h3>
+                    <p>Trained pharmacy staff to assist with medicine inquiries and prescriptions.</p>
+                </div>
             </div>
             <button class="price-list-button" onclick="showPriceList('pharmacy')">📋 View Price List</button>
             <button class="close-service" onclick="toggleService('pharmacy-details')">Hide Details</button>
@@ -315,12 +427,127 @@
         <p>© 2026 Saint Dominic General Hospital, Inc.</p>
         <p>ICT Department</p>
     </footer>
-
     <!-- SCROLL TO TOP BUTTON -->
     <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
 
-    <!-- ✅ HIWALAY NA ANG JAVASCRIPT! -->
     <script src="script.js"></script>
+
+    <!-- ✅ PDF VIEWER + PASSWORD PROTECTION SCRIPTS -->
+    <script>
+        // ==========================================
+        // 🔐 PASSWORD SETTINGS — PALITAN DITO KUNG GUSTO MO!
+        // ==========================================
+        const CORRECT_PASSWORD = "Stdgh@2024!";
+
+        let selectedFileUrl = "";
+
+        // ==========================================
+        // 📄 PDF VIEWER FUNCTIONS
+        // ==========================================
+        function openPdfViewer(pdfUrl, fileName) {
+            document.getElementById('pdfViewerFrame').src = pdfUrl;
+            document.getElementById('pdfFileName').textContent = fileName;
+            document.getElementById('pdfViewerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfViewer(event) {
+            // I-close lang kapag kinlik ang X o sa labas ng kahon
+            if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
+                document.getElementById('pdfViewerModal').style.display = 'none';
+                document.getElementById('pdfViewerFrame').src = ''; // I-clear para hindi patuloy na nagbabasa
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ==========================================
+        // 🔒 PASSWORD PROTECTION FUNCTIONS
+        // ==========================================
+        function requestPassword(button) {
+            selectedFileUrl = button.getAttribute("data-file");
+            const fileName = button.getAttribute("data-name");
+            document.getElementById("fileToDownloadName").textContent = "File: " + fileName;
+            document.getElementById("downloadPassword").value = "";
+            document.getElementById("passwordError").style.display = "none";
+            document.getElementById("passwordModal").style.display = "flex";
+            document.getElementById("passwordModal").setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePasswordModal() {
+            document.getElementById("passwordModal").style.display = "none";
+            document.getElementById("passwordModal").setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            selectedFileUrl = "";
+        }
+
+        function checkPassword() {
+            const input = document.getElementById("downloadPassword").value;
+            if (input === CORRECT_PASSWORD) {
+                // ✅ TAMA ANG PASSWORD — SIMULAN ANG DOWNLOAD
+                window.location.href = selectedFileUrl;
+                closePasswordModal();
+            } else {
+                // ❌ MALI ANG PASSWORD
+                document.getElementById("passwordError").style.display = "block";
+            }
+        }
+    </script>
+
+    <!-- ✅ KAILANGANG CSS PARA SA PDF VIEWER -->
+    <style>
+        /* PDF VIEWER MODAL */
+        .pdf-modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .pdf-modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 95%;
+            height: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .pdf-close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+            z-index: 10;
+        }
+        .pdf-close:hover {
+            color: #000;
+        }
+        #pdfFileName {
+            padding: 15px 20px 5px;
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        #pdfViewerFrame {
+            flex: 1;
+            width: 100%;
+            border: none;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
 
 </body>
 </html>
