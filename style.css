@@ -1,868 +1,768 @@
 /* ==============================
-   GENERAL
+GENERAL
 ================================= */
-* {
-    box-sizing: border-box;
+{
+box-sizing: border-box;
 }
-
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
-
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('logo.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: 55% auto;
-    background-color: #f0f8f5;
-    color: #333;
+margin: 0;
+font-family: Arial, sans-serif;
+background-image: url('logo.jpg');
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+background-size: 55% auto;
+background-color: #f0f8f5;
+color: #333;
 }
-
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.78);
-    z-index: -1;
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(255, 255, 255, 0.78);
+z-index: -1;
 }
-
 img {
-    max-width: 100%;
-    height: auto;
+max-width: 100%;
+height: auto;
 }
-
 /* ==============================
-   HEADER
+HEADER
 ================================= */
 .header {
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 25px;
+padding: 20px;
+text-align: center;
+position: relative;
+z-index: 1;
 }
-
 .hospital-logo {
-    width: 150px;
-    height: auto;
+width: 150px;
+height: auto;
 }
-
 .header-text h1 {
-    margin: 0;
-    color: #742080;
-    font-size: 32px;
+margin: 0;
+color: #742080;
+font-size: 32px;
 }
-
 .header-text p {
-    margin: 8px 0;
-    color: #742080;
-    font-size: 18px;
+margin: 8px 0;
+color: #742080;
+font-size: 18px;
 }
-
 .header-text em {
-    color: #742080;
-    font-size: 17px;
+color: #742080;
+font-size: 17px;
 }
-
 /* ==============================
-   NAVIGATION — SIGURADONG CLICKABLE NA!
+NAVIGATION
 ================================= */
 .navbar {
-    background: #742080;
-    width: 100%;
-    position: relative;
-    z-index: 9999; /* ← PINAKAMATAAS — WALANG MAHARANG! */
+background: #742080;
+width: 100%;
+position: relative;
+z-index: 1;
 }
-
 .nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px; /* ← LAYO: 25 / 30 / 35 / 40 — BAGUHIN MO KUNG GUSTO MO */
-    flex-wrap: wrap;
-    padding: 5px 0;
-    position: relative;
-    z-index: 9999;
-    pointer-events: none; /* ← TANGGALIN ANG HARANG SA LALAGYAN */
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
 }
-
 .nav-container a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 18px;
-    font-weight: bold;
-    transition: background 0.3s;
-    position: relative;
-    z-index: 99999; /* ← PINAKA-UNA SA LAHAT! */
-    pointer-events: auto !important; /* ← SIGURADONG PWEDE I-CLICK! */
-    cursor: pointer; /* ← IPAKITANG PWEDE I-CLICK! */
+color: white;
+text-decoration: none;
+padding: 15px 25px;
+font-weight: bold;
+transition: 0.3s;
 }
-
 .nav-container a:hover {
-    background: #5c1767;
+background: #5c1767;
 }
-
 /* ==============================
-   HERO
+HERO
 ================================= */
 .hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: rgba(238, 224, 242, 0.85);
-    position: relative;
-    z-index: 1;
+text-align: center;
+padding: 80px 20px;
+background: rgba(238, 224, 242, 0.85);
+position: relative;
+z-index: 1;
 }
-
 .hero h2 {
-    color: #742080;
-    font-size: 32px;
-    margin-bottom: 20px;
+color: #742080;
+font-size: 32px;
+margin-bottom: 20px;
 }
-
 .hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
+font-size: 20px;
+margin-bottom: 30px;
 }
-
 .hero button {
-    background: #742080;
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
+background: #742080;
+color: white;
+border: none;
+padding: 12px 28px;
+font-size: 16px;
+border-radius: 6px;
+cursor: pointer;
+transition: 0.3s;
 }
-
 .hero button:hover {
-    background: #5c1767;
+background: #5c1767;
 }
-
 /* ==============================
-   SECTIONS
+SECTIONS
 ================================= */
 .section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 60px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+max-width: 1100px;
+margin: auto;
+padding: 60px 20px;
+text-align: center;
+position: relative;
+z-index: 1;
 }
-
 .section h2 {
-    color: #742080;
-    font-size: 30px;
-    margin-bottom: 25px;
+color: #742080;
+font-size: 30px;
+margin-bottom: 25px;
 }
-
 .section p {
-    line-height: 1.7;
+line-height: 1.7;
 }
-
 /* ==============================
-   SERVICES
+SERVICES
 ================================= */
 .services-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
 }
-
 .service-card {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
+background: rgba(255, 255, 255, 0.92);
+padding: 30px 20px;
+border-radius: 10px;
+box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+transition: 0.3s;
 }
-
 .service-card:hover {
-    transform: translateY(-5px);
+transform: translateY(-5px);
 }
-
 .service-card h3 {
-    color: #742080;
-    margin-bottom: 10px;
+color: #742080;
+margin-bottom: 10px;
 }
-
 /* ==============================
-   CLICKABLE SERVICE
+CLICKABLE SERVICE
 ================================= */
 .service-link {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+text-decoration: none;
+color: inherit;
+cursor: pointer;
 }
-
 .service-link span {
-    display: inline-block;
-    margin-top: 15px;
-    color: #742080;
-    font-weight: bold;
+display: inline-block;
+margin-top: 15px;
+color: #742080;
+font-weight: bold;
 }
-
 .service-link:hover span {
-    text-decoration: underline;
+text-decoration: underline;
 }
-
 .service-button {
-    cursor: pointer;
+cursor: pointer;
 }
-
 .service-button span {
-    display: inline-block;
-    margin-top: 15px;
-    color: #742080;
-    font-weight: bold;
+display: inline-block;
+margin-top: 15px;
+color: #742080;
+font-weight: bold;
 }
-
 .service-button:hover span {
-    text-decoration: underline;
+text-decoration: underline;
 }
-
 /* ==============================
-   SERVICE DETAILS
+SERVICE DETAILS
 ================================= */
 .service-details {
-    display: none;
-    background: rgba(243, 232, 246, 0.85);
-    animation: fadeIn 0.4s ease;
+display: none;
+background: rgba(243, 232, 246, 0.85);
+animation: fadeIn 0.4s ease;
 }
-
 .details-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 30px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+margin-top: 30px;
 }
-
 .details-card {
-    background: rgba(255, 255, 255, 0.92);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+background: rgba(255, 255, 255, 0.92);
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
 }
-
 .details-card h3 {
-    color: #742080;
+color: #742080;
 }
-
 .close-service {
-    margin-top: 30px;
-    background: #742080;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
+margin-top: 30px;
+background: #742080;
+color: white;
+border: none;
+padding: 12px 25px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 15px;
 }
-
 .close-service:hover {
-    background: #5c1767;
+background: #5c1767;
 }
-
 /* ==============================
-   ANIMATION
+ANIMATION
 ================================= */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(10px);
 }
-
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
 /* ==============================
-   HOME GALLERY
+HOME GALLERY
 ================================= */
 .home-gallery {
-    background: rgba(248, 248, 248, 0.85);
+background: rgba(248, 248, 248, 0.85);
 }
-
 .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 30px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+margin-top: 30px;
 }
-
 .gallery-item {
-    overflow: hidden;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+overflow: hidden;
+border-radius: 12px;
+background: white;
+box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
 }
-
 .gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+width: 100%;
+height: 220px;
+object-fit: cover;
+display: block;
+transition: transform 0.3s ease;
 }
-
 .gallery-item:hover img {
-    transform: scale(1.05);
+transform: scale(1.05);
 }
-
 .gallery-img {
-    cursor: zoom-in;
-    transition: transform 0.2s ease;
+cursor: zoom-in;
+transition: transform 0.2s ease;
 }
 .gallery-img:hover {
-    transform: scale(1.02);
+transform: scale(1.02);
 }
-
 /* ===== LIGHTBOX / IMAGE VIEWER ===== */
 .lightbox {
-  display: none;
-  position: fixed;
-  z-index: 99999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  text-align: center;
-  padding-top: 20px;
-  cursor: pointer;
+display: none;
+position: fixed;
+z-index: 99999;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.9);
+text-align: center;
+padding-top: 20px;
+cursor: pointer;
 }
-
 .lightbox img {
-  max-width: 90%;
-  max-height: 85vh;
-  margin: auto;
-  display: block;
-  border-radius: 4px;
+max-width: 90%;
+max-height: 85vh;
+margin: auto;
+display: block;
+border-radius: 4px;
 }
-
 .lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+cursor: pointer;
 }
-
 /* ==============================
-   HOSPITAL VIDEOS
+HOSPITAL VIDEOS
 ================================= */
 .hospital-video {
-    background: rgba(255, 255, 255, 0.85);
+background: rgba(255, 255, 255, 0.85);
 }
-
 .videos-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 30px auto;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+width: 100%;
+max-width: 1200px;
+margin: 30px auto;
 }
-
 .video-container {
-    width: 100%;
+width: 100%;
 }
-
 .video-container video {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    background: black;
-    display: block;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+width: 100%;
+height: 250px;
+object-fit: contain;
+background: black;
+display: block;
+border-radius: 12px;
+box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
-
 /* ==============================
-   PDF VIEWER MODAL
+PDF VIEWER MODAL
 ================================= */
 .pdf-modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.8);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+box-sizing: border-box;
 }
 .pdf-modal-content {
-    background-color: white;
-    border-radius: 8px;
-    width: 95%;
-    height: 90%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
+background-color: white;
+border-radius: 8px;
+width: 95%;
+height: 90%;
+max-width: 900px;
+display: flex;
+flex-direction: column;
+position: relative;
+box-sizing: border-box;
 }
 .pdf-close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #666;
-    z-index: 10;
+position: absolute;
+right: 15px;
+top: 10px;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+color: #666;
+z-index: 10;
 }
 .pdf-close:hover { color: #000; }
 #pdfFileName {
-    padding: 15px 20px 5px;
-    margin: 0;
-    font-size: 18px;
-    color: #333;
+padding: 15px 20px 5px;
+margin: 0;
+font-size: 18px;
+color: #333;
 }
 #pdfViewerFrame {
-    flex: 1;
-    width: 100%;
-    border: none;
-    border-radius: 0 0 8px 8px;
-    background: white;
+flex: 1;
+width: 100%;
+border: none;
+border-radius: 0 0 8px 8px;
+background: white;
 }
-
 .pdf-modal {
-    -webkit-print-color-adjust: exact;
+-webkit-print-color-adjust: exact;
 }
 @media print {
-    .pdf-modal {
-        display: none !important;
-    }
+.pdf-modal {
+display: none !important;
+}
 }
 .pdf-modal-content {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
-
 /* BUTTON STYLES */
 .view-btn, .download-btn {
-    padding: 10px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
+padding: 10px 16px;
+margin: 5px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 14px;
+font-weight: bold;
 }
 .view-btn { background: #742080; color: white; }
 .view-btn:hover { background: #5c1767; }
 .download-btn { background: #27ae60; color: white; }
 .download-btn:hover { background: #1e8449; }
-
 /* ==============================
-   PDF DOCUMENTS
+PDF DOCUMENTS
 ================================= */
 .pdf-section {
-    background: rgba(0, 0, 0, 0.0);
+background: rgba(0, 0, 0, 0.0);
 }
-
 .pdf-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 30px auto;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+max-width: 1200px;
+margin: 30px auto;
 }
-
 .pdf-card {
-    display: block;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
-    transition: transform 0.2s ease;
+display: block;
+background: rgba(255, 255, 255, 0.92);
+padding: 25px;
+border-radius: 12px;
+text-decoration: none;
+color: inherit;
+box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+transition: transform 0.2s ease;
 }
-
 .pdf-card:hover {
-    transform: translateY(-5px);
+transform: translateY(-5px);
 }
-
 .pdf-card h3 {
-    color: #742080;
+color: #742080;
 }
-
 .pdf-card span {
-    display: inline-block;
-    margin-top: 15px;
-    color: #742080;
-    font-weight: bold;
+display: inline-block;
+margin-top: 15px;
+color: #742080;
+font-weight: bold;
 }
-
 /* ==============================
-   EXCEL FILES
+EXCEL FILES
 ================================= */
 .excel-section {
-    background: rgba(0, 0, 0, 0.0);
+background: rgba(0, 0, 0, 0.0);
 }
-
 .excel-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 900px;
-    margin: 30px auto;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+max-width: 900px;
+margin: 30px auto;
 }
-
 .excel-card {
-    display: block;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
-    transition: transform 0.2s ease;
+display: block;
+background: rgba(255, 255, 255, 0.92);
+padding: 25px;
+border-radius: 12px;
+text-decoration: none;
+color: inherit;
+box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+transition: transform 0.2s ease;
 }
-
 .excel-card:hover {
-    transform: translateY(-5px);
+transform: translateY(-5px);
 }
-
 .excel-card h3 {
-    color: #742080;
+color: #742080;
 }
-
 .excel-card span {
-    display: inline-block;
-    margin-top: 15px;
-    color: #742080;
-    font-weight: bold;
+display: inline-block;
+margin-top: 15px;
+color: #742080;
+font-weight: bold;
 }
-
 /* ==============================
-   📋 PRICE LIST MODAL — MALAPAD
+📋 PRICE LIST MODAL — MALAPAD
 ================================= */
 .price-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.65);
-    padding: 20px;
-    overflow-y: auto;
+display: none;
+position: fixed;
+inset: 0;
+z-index: 9999;
+background: rgba(0, 0, 0, 0.65);
+padding: 20px;
+overflow-y: auto;
 }
-
 .price-modal.active {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+display: flex;
+align-items: flex-start;
+justify-content: center;
 }
-
 .price-modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    width: 95%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
+background: white;
+padding: 25px;
+border-radius: 10px;
+width: 95%;
+max-width: 800px;
+max-height: 90vh;
+overflow-y: auto;
+position: relative;
 }
-
 /* ==============================
-   🔑 PASSWORD MODAL — SIGURADONG NASA GITNA
+🔑 PASSWORD MODAL — SIGURADONG NASA GITNA
 ================================= */
 #passwordModal.price-modal.active {
-    align-items: center !important;
-    justify-content: center !important;
+align-items: center !important;
+justify-content: center !important;
 }
-
 #passwordModal .price-modal-content {
-    position: fixed !important;
-    top: 50vh !important;
-    left: 50vw !important;
-    transform: translate(-50%, -50%) !important;
-    max-width: 420px !important;
-    width: 90% !important;
-    margin: 0 !important;
+position: fixed !important;
+top: 50vh !important;
+left: 50vw !important;
+transform: translate(-50%, -50%) !important;
+max-width: 420px !important;
+width: 90% !important;
+margin: 0 !important;
 }
-
 .price-modal-close {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background: #f0e6f3;
-    color: #742080;
-    font-size: 28px;
-    line-height: 1;
-    cursor: pointer;
+position: absolute;
+top: 12px;
+right: 15px;
+width: 40px;
+height: 40px;
+border: none;
+border-radius: 50%;
+background: #f0e6f3;
+color: #742080;
+font-size: 28px;
+line-height: 1;
+cursor: pointer;
 }
-
 .price-modal-close:hover {
-    background: #742080;
-    color: white;
+background: #742080;
+color: white;
 }
-
 .price-search-wrap {
-    margin: 20px 0;
+margin: 20px 0;
 }
-
 .price-search-wrap input {
-    width: 100%;
-    padding: 13px 15px;
-    border: 1px solid #d8c3df;
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
+width: 100%;
+padding: 13px 15px;
+border: 1px solid #d8c3df;
+border-radius: 6px;
+font-size: 16px;
+outline: none;
 }
-
 .price-search-wrap input:focus {
-    border-color: #742080;
+border-color: #742080;
 }
-
 .price-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid #eee;
-    border-radius: 8px;
+width: 100%;
+overflow-x: auto;
+border: 1px solid #eee;
+border-radius: 8px;
 }
-
 .price-table {
-    width: 100%;
-    min-width: 650px;
-    border-collapse: collapse;
+width: 100%;
+min-width: 650px;
+border-collapse: collapse;
 }
-
 .price-table th,
 .price-table td {
-    padding: 13px 15px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
+padding: 13px 15px;
+border-bottom: 1px solid #eee;
+text-align: left;
 }
-
 .price-table th {
-    background: #eee0f2;
-    color: #742080;
+background: #eee0f2;
+color: #742080;
 }
-
 .price-table td:nth-child(3) {
-    text-align: right;
-    font-weight: bold;
-    white-space: nowrap;
+text-align: right;
+font-weight: bold;
+white-space: nowrap;
 }
-
 .price-table td:nth-child(4) {
-    white-space: nowrap;
-    font-weight: bold;
+white-space: nowrap;
+font-weight: bold;
 }
-
 .price-table td small {
-    opacity: 0.7;
+opacity: 0.7;
 }
-
 .price-table tbody tr:hover {
-    background: #faf7fb;
+background: #faf7fb;
 }
-
 /* ===== SCROLL TO TOP BUTTON ===== */
 #scrollTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 9999;
-  font-size: 22px;
-  width: 50px;
-  height: 50px;
-  background-color: #742080;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+display: none;
+position: fixed;
+bottom: 30px;
+right: 30px;
+z-index: 9999;
+font-size: 22px;
+width: 50px;
+height: 50px;
+background-color: #742080;
+color: white;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+transition: all 0.3s ease;
 }
-
 #scrollTopBtn:hover {
-  background-color: #5c1767;
-  transform: translateY(-3px);
+background-color: #5c1767;
+transform: translateY(-3px);
 }
-
 /* ==============================
-   FOOTER
+FOOTER
 ================================= */
 footer {
-    background: #742080;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    position: relative;
-    z-index: 1;
+background: #742080;
+color: white;
+text-align: center;
+padding: 25px 15px;
+position: relative;
+z-index: 1;
 }
-
 /* ==============================
-   RESPONSIVE / TABLET & MOBILE
+RESPONSIVE / TABLET & MOBILE
 ================================= */
 @media (max-width: 900px) {
-    .header {
-        gap: 15px;
-    }
-    .hospital-logo {
-        width: 120px;
-    }
-    .header-text h1 {
-        font-size: 26px;
-    }
-    .header-text p {
-        font-size: 16px;
-    }
-    .header-text em {
-        font-size: 15px;
-    }
-    .services-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.header {
+gap: 15px;
 }
-
+.hospital-logo {
+width: 120px;
+}
+.header-text h1 {
+font-size: 26px;
+}
+.header-text p {
+font-size: 16px;
+}
+.header-text em {
+font-size: 15px;
+}
+.services-container {
+grid-template-columns: repeat(2, 1fr);
+}
+}
 @media (max-width: 768px) {
-    .details-container {
-        grid-template-columns: 1fr;
-    }
-    .videos-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin: 20px 0;
-    }
-    .video-container video {
-        height: 130px;
-        border-radius: 8px;
-    }
-    .pdf-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    .pdf-card {
-        padding: 15px;
-    }
-    .pdf-card h3 {
-        font-size: 16px;
-    }
-    .excel-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    .excel-card {
-        padding: 15px;
-    }
-    .excel-card h3 {
-        font-size: 16px;
-    }
-    .price-modal {
-        padding: 10px;
-    }
-    .price-modal-content {
-        max-height: 94vh;
-        padding: 22px 15px;
-    }
-    #passwordModal .price-modal-content {
-        width: 95% !important;
-        max-width: 340px !important;
-    }
-    .price-list-button {
-        width: 100%;
-        margin-right: 0;
-    }
-    .price-table {
-        min-width: 620px;
-    }
+.details-container {
+grid-template-columns: 1fr;
 }
-
+.videos-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 8px;
+margin: 20px 0;
+}
+.video-container video {
+height: 130px;
+border-radius: 8px;
+}
+.pdf-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+.pdf-card {
+padding: 15px;
+}
+.pdf-card h3 {
+font-size: 16px;
+}
+.excel-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+.excel-card {
+padding: 15px;
+}
+.excel-card h3 {
+font-size: 16px;
+}
+.price-modal {
+padding: 10px;
+}
+.price-modal-content {
+max-height: 94vh;
+padding: 22px 15px;
+}
+#passwordModal .price-modal-content {
+width: 95% !important;
+max-width: 340px !important;
+}
+.price-list-button {
+width: 100%;
+margin-right: 0;
+}
+.price-table {
+min-width: 620px;
+}
+}
 @media (max-width: 600px) {
-    .header {
-        flex-direction: column;
-        padding: 20px 10px;
-        gap: 8px;
-    }
-    .hospital-logo {
-        width: 110px;
-    }
-    .header-text h1 {
-        font-size: 22px;
-        line-height: 1.3;
-    }
-    .header-text p {
-        font-size: 14px;
-        margin: 6px 0;
-    }
-    .header-text em {
-        font-size: 13px;
-    }
-    .nav-container {
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-    }
-    .nav-container a {
-        width: 100%;
-        text-align: center;
-        padding: 12px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .hero {
-        padding: 55px 15px;
-    }
-    .hero h2 {
-        font-size: 25px;
-        line-height: 1.3;
-    }
-    .hero p {
-        font-size: 16px;
-        line-height: 1.6;
-    }
-    .hero button {
-        width: 80%;
-        max-width: 250px;
-        padding: 13px;
-    }
-    .section {
-        padding: 45px 15px;
-    }
-    .section h2 {
-        font-size: 26px;
-    }
-    .services-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .service-card {
-        padding: 25px 15px;
-    }
-    footer {
-        font-size: 14px;
-    }
-    .gallery-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.header {
+flex-direction: column;
+padding: 20px 10px;
+gap: 8px;
+}
+.hospital-logo {
+width: 110px;
+}
+.header-text h1 {
+font-size: 22px;
+line-height: 1.3;
+}
+.header-text p {
+font-size: 14px;
+margin: 6px 0;
+}
+.header-text em {
+font-size: 13px;
+}
+.nav-container {
+flex-direction: column;
+width: 100%;
+}
+.nav-container a {
+width: 100%;
+text-align: center;
+padding: 12px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.hero {
+padding: 55px 15px;
+}
+.hero h2 {
+font-size: 25px;
+line-height: 1.3;
+}
+.hero p {
+font-size: 16px;
+line-height: 1.6;
+}
+.hero button {
+width: 80%;
+max-width: 250px;
+padding: 13px;
+}
+.section {
+padding: 45px 15px;
+}
+.section h2 {
+font-size: 26px;
+}
+.services-container {
+grid-template-columns: 1fr;
+gap: 15px;
+}
+.service-card {
+padding: 25px 15px;
+}
+footer {
+font-size: 14px;
+}
+.gallery-container {
+grid-template-columns: repeat(2, 1fr);
+}
 }
