@@ -75,7 +75,7 @@ img {
 }
 
 /* ==============================
-   NAVIGATION
+   NAVIGATION — INAYOS ANG PAGITNA
 ================================= */
 .navbar {
     background: #742080;
@@ -86,7 +86,7 @@ img {
 
 .nav-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* ← Pantay mula gilid hanggang gilid */
     align-items: center;
     flex-wrap: wrap;
 }
@@ -94,9 +94,11 @@ img {
 .nav-container a {
     color: white;
     text-decoration: none;
-    padding: 15px 25px;
+    padding: 15px 0; /* ← Tinanggal ang kaliwa-kanang padding */
     font-weight: bold;
     transition: 0.3s;
+    flex: 1; /* ← Pantay na lapad para sa lahat */
+    text-align: center; /* ← Nakagitna ang teksto */
 }
 
 .nav-container a:hover {
