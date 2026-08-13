@@ -64,7 +64,7 @@
         <img id="lightbox-img" src="" alt="Enlarged Image">
     </div>
 
-    <!-- ✅ PDF VIEWER — BUBUKAS KAPAG PININDOT ANG "VIEW" -->
+    <!-- ✅ PDF VIEWER MODAL -->
     <div id="pdfViewerModal" class="pdf-modal" style="display:none;" onclick="closePdfViewer(event)">
         <div class="pdf-modal-content">
             <span class="pdf-close" onclick="closePdfViewer()">&times;</span>
@@ -95,43 +95,24 @@
         </div>
     </section>
 
-    <!-- ✅ PDF DOCUMENTS — MAY VIEWER + PASSWORD PROTECTION SA DOWNLOAD! -->
+    <!-- ✅ PDF DOCUMENTS SECTION -->
     <section id="documents" class="section">
-        <h2>Hospital Documents (PDF)</h2>
+        <h2>Hospital Documents</h2>
         <p>Click "View" to read the document. Password is required to download.</p>
         <div class="pdf-container">
             <div class="pdf-card">
-                <h3>Document 1</h3>
-                <p>General Information</p>
+                <h3>Room Rates & Inclusions</h3>
+                <p>Room rates and amenities</p>
                 <button class="view-btn" onclick="openPdfViewer('pdf/hospital-profile.pdf', 'Room Rates & Inclusions')">👁️ View</button>
                 <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Room Rates & Inclusions" onclick="requestPassword(this)">🔒 Download</button>
             </div>
-            <div class="pdf-card">
-                <h3>Document 2</h3>
-                <p>Hospital Policies</p>
-                <button class="view-btn" onclick="openPdfViewer('pdf/hospital-profile.pdf', 'Room Rates & Inclusions')">👁️ View</button>
-                <button class="download-btn protected-download" data-file="pdf/hospital-profile.pdf" data-name="Room Rates & Inclusions" onclick="requestPassword(this)">🔒 Download</button>
         </div>
     </section>
 
-    <!-- ✅ EXCEL FILES — PREVIEW BUTTON + PASSWORD PROTECTION -->
-    <section class="section">
-        <h2>Excel Files</h2>
-        <p>Password is required to download.</p>
-        <div class="excel-container">
-            <div class="excel-card">
-                <h3>Excel File 1</h3>
-                <p>Reports and Records</p>
-                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
-                <button class="download-btn protected-download" data-file="excel/file1.xlsx" data-name="Excel File 1" onclick="requestPassword(this)">🔒 Download</button>
-            </div>
-            <div class="excel-card">
-                <h3>Excel File 2</h3>
-                <p>Data and Statistics</p>
-                <button class="view-btn" onclick="alert('Excel files cannot be previewed directly.\\nPlease download to view.')">📄 Preview</button>
-                <button class="download-btn protected-download" data-file="excel/file2.xlsx" data-name="Excel File 2" onclick="requestPassword(this)">🔒 Download</button>
-            </div>
-        </div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Saint Dominic General Hospital, Inc. is committed to providing quality healthcare services and ensuring the safety and well-being of every patient.</p>
     </section>
 
     <!-- SERVICES -->
@@ -403,12 +384,6 @@
         </div>
     </div>
 
-     <!-- ABOUT -->
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>Saint Dominic General Hospital, Inc. is committed to providing quality healthcare services and ensuring the safety and well-being of every patient.</p>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact" class="section">
         <h2>Contact Us</h2>
@@ -424,7 +399,7 @@
     <!-- FOOTER -->
     <footer>
         <p>© 2026 Saint Dominic General Hospital, Inc.</p>
-        <p>KAAGAPAY MO SA TAMANG KALUSUGAN</p>
+        <p>ICT Department</p>
     </footer>
     <!-- SCROLL TO TOP BUTTON -->
     <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
@@ -441,26 +416,27 @@
         let selectedFileUrl = "";
 
         // ==========================================
-        // 📄 PDF VIEWER FUNCTIONS
+        // 📄 PDF VIEWER — WALANG TOOLBAR! PURONG PDF LANG!
         // ==========================================
         function openPdfViewer(pdfUrl, fileName) {
-            document.getElementById('pdfViewerFrame').src = pdfUrl;
+            // ✅ Itinatago ang toolbar at pindutan sa loob ng PDF
+            const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
+            document.getElementById('pdfViewerFrame').src = cleanUrl;
             document.getElementById('pdfFileName').textContent = fileName;
             document.getElementById('pdfViewerModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closePdfViewer(event) {
-            // I-close lang kapag kinlik ang X o sa labas ng kahon
             if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('pdf-close')) {
                 document.getElementById('pdfViewerModal').style.display = 'none';
-                document.getElementById('pdfViewerFrame').src = ''; // I-clear para hindi patuloy na nagbabasa
+                document.getElementById('pdfViewerFrame').src = '';
                 document.body.style.overflow = '';
             }
         }
 
         // ==========================================
-        // 🔒 PASSWORD PROTECTION FUNCTIONS
+        // 🔒 PASSWORD PROTECTION
         // ==========================================
         function requestPassword(button) {
             selectedFileUrl = button.getAttribute("data-file");
@@ -483,19 +459,16 @@
         function checkPassword() {
             const input = document.getElementById("downloadPassword").value;
             if (input === CORRECT_PASSWORD) {
-                // ✅ TAMA ANG PASSWORD — SIMULAN ANG DOWNLOAD
                 window.location.href = selectedFileUrl;
                 closePasswordModal();
             } else {
-                // ❌ MALI ANG PASSWORD
                 document.getElementById("passwordError").style.display = "block";
             }
         }
     </script>
 
-    <!-- ✅ KAILANGANG CSS PARA SA PDF VIEWER -->
+    <!-- ✅ PDF VIEWER CSS -->
     <style>
-        /* PDF VIEWER MODAL */
         .pdf-modal {
             position: fixed;
             z-index: 1000;
@@ -503,7 +476,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -514,8 +487,8 @@
             background-color: white;
             border-radius: 8px;
             width: 95%;
-            height: 90%;
-            max-width: 900px;
+            height: 92%;
+            max-width: 950px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -530,6 +503,7 @@
             cursor: pointer;
             color: #666;
             z-index: 10;
+            line-height: 1;
         }
         .pdf-close:hover {
             color: #000;
@@ -539,6 +513,7 @@
             margin: 0;
             font-size: 18px;
             color: #333;
+            padding-right: 40px;
         }
         #pdfViewerFrame {
             flex: 1;
