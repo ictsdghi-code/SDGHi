@@ -9,7 +9,9 @@ let selectedFileUrl = "";
 // ==========================================
 function openPdfViewer(pdfUrl, fileName) {
     console.log("Opening PDF:", pdfUrl, fileName);
-    document.getElementById('pdfViewerFrame').src = pdfUrl;
+    // Magdagdag ng #toolbar=0 para itago ang mga buttons ng PDF
+    const cleanUrl = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1";
+    document.getElementById('pdfViewerFrame').src = cleanUrl;
     document.getElementById('pdfFileName').textContent = fileName;
     document.getElementById('pdfViewerModal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
