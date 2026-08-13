@@ -75,32 +75,35 @@ img {
 }
 
 /* ==============================
-   NAVIGATION — INAYOS ANG PAGITNA
+   NAVIGATION — CLICKABLE NA + AYOS ANG PAGITNA
 ================================= */
 .navbar {
     background: #742080;
     width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
 .nav-container {
-    display: flex !important;
-    justify-content: center !important; /* ← Hindi na sa gilid, nasa gitna na lahat */
-    align-items: center !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* ← LAYO NG MGA BUTTON: palitan mo lang (25, 30, 35, 40) */
     flex-wrap: wrap;
-    gap: 40px !important; /* ← Ito ang layo ng bawat button — pwede mong baguhin: 30, 40, 50 */
+    padding: 5px 0;
 }
 
 .nav-container a {
     color: white;
     text-decoration: none;
-    padding: 5px 20px !important; /* ← May sariling lapad ang bawat button */
+    padding: 12px 18px;
     font-weight: bold;
-    transition: 0.3s;
-    text-align: center !important;
-    flex: none !important; /* ← Hindi na mag-aagawan ng lapad */
+    transition: background 0.3s;
+    position: relative;
+    z-index: 11;
+    pointer-events: auto !important; /* ← SIGURADONG PWEDE I-CLICK! */
 }
+
 .nav-container a:hover {
     background: #5c1767;
 }
@@ -815,6 +818,7 @@ footer {
     .nav-container {
         flex-direction: column;
         width: 100%;
+        gap: 0;
     }
     .nav-container a {
         width: 100%;
