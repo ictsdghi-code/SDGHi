@@ -229,6 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             closePriceList();
             closePasswordModal();
             closePdfViewer();
+            closeLightbox();  // ← IDAGDAG MO LANG ITO! ✅
         }
     });
 });
