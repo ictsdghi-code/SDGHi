@@ -144,12 +144,12 @@ img {
    ✅ VISION & MISSION SECTION — Estilo
    ========================================== */
 .vision-mission-section {
-    background: rgba(238, 224, 242, 0.6); /* ✅ Maputlang lila, katulad ng Hero section */
+    background: transparent; /* ✅ Maputlang lila, katulad ng Hero section */
 }
 
 .vision-mission-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* ✅ Dalawang kahon magkatabi */
+    grid-template-columns: 1fr; /* ✅ Dalawang kahon magkatabi */
     gap: 30px; /* ✅ Layo ng Vision sa Mission */
     margin-top: 30px;
 }
