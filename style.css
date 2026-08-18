@@ -140,6 +140,47 @@ img {
     background: #5c1767;
 }
 
+/* ==========================================
+   ✅ VISION & MISSION SECTION — Estilo
+   ========================================== */
+.vision-mission-section {
+    background: rgba(238, 224, 242, 0.6); /* ✅ Maputlang lila, katulad ng Hero section */
+}
+
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ✅ Dalawang kahon magkatabi */
+    gap: 30px; /* ✅ Layo ng Vision sa Mission */
+    margin-top: 30px;
+}
+
+.vm-card {
+    background: rgba(255, 255, 255, 0.92); /* ✅ Puti na medyo transparent */
+    padding: 25px;
+    border-radius: 10px; /* ✅ Bilog na kanto */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* ✅ May anino sa ilalim */
+}
+
+.vm-card h3 {
+    color: #742080; /* ✅ Kulay purple — katulad ng iba */
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.vm-card p {
+    line-height: 1.8; /* ✅ Maluwag ang linya, madaling basahin */
+    color: #333;
+    font-size: 16px;
+}
+
+/* ✅ SA TELEPONO — magiging patayo na (isa-isa pababa) */
+@media (max-width: 768px) {
+    .vision-mission-grid {
+        grid-template-columns: 1fr; /* ✅ Isang kahon na lang bawat linya */
+    }
+}
+
+
 /* ==============================
    SECTIONS
 ================================= */
